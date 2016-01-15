@@ -19,7 +19,7 @@ public class testName {
 	@RequestMapping("/")
     public ModelAndView root(Model model) {
 		model.addAttribute("message", "Hello World!");
-        
+        System.out.println("\n\n\n\n\n\n\n Got HERE \n\n\n\n\n\n!!!");
         return new ModelAndView("WEB-INF/views/root.jsp");
     }
 	
