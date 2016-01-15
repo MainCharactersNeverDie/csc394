@@ -10,6 +10,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 
 <properties>
     <spring.version>3.0.5.RELEASE</spring.version>
+    <src.dir>src/main/</src.dir>
     <jdk.version>1.6</jdk.version>
 </properties>
 
@@ -42,7 +43,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 </dependencies>
 
 <build>
-    <finalName>SampleSpringMaven</finalName>
+    <finalName>TempProjectName</finalName>
     <plugins>
         <plugin>
             <groupId>org.apache.tomcat.maven</groupId>
