@@ -2,6 +2,7 @@ package main.java.testName;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -34,5 +35,11 @@ public class testName {
 		model.addAttribute("message", "Hello World!");
         
         return new ModelAndView("WEB-INF/views/postJobs.jsp");
+    }
+	
+	@ExceptionHandler(Throwable.class)
+	public ModelAndView exception(Model model) {
+        
+        return new ModelAndView("WEB-INF/views/hamsterPage.jsp");
     }
 }

@@ -5,7 +5,7 @@
 <web-app>
 <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/spring-context.xml</param-value>
+        <param-value>/WEB-INF/springconfig/spring-context.xml</param-value>
     </context-param>
     <servlet>
         <servlet-name>dispatcher</servlet-name>
