@@ -36,10 +36,5 @@ public class testName {
         
         return new ModelAndView("WEB-INF/views/postJobs.jsp");
     }
-	
-	@ExceptionHandler(Throwable.class)
-	public ModelAndView exception(Model model) {
-        
-        return new ModelAndView("WEB-INF/views/hamsterPage.jsp");
-    }
+
 }

@@ -14,6 +14,12 @@
             <param-name>contextConfigLocation</param-name>
             <param-value>/WEB-INF/springconfig/spring-context.xml</param-value>
         </init-param>
+		
+		<init-param>
+			<param-name>throwExceptionIfNoHandlerFound</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
@@ -23,6 +29,12 @@
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+	
+	
+<error-page>
+<error-code>404</error-code>
+<location>/WEB-INF/views/hamsterPage.jsp</location>
+</error-page>
 
 </web-app>
 
