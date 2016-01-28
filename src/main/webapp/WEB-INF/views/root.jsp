@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-
+<head>
+	<title>Login/Sign Up Page</title>
+	<link rel="stylesheet" href="css\normalize.css">
+	<link rel="stylesheet" href="css\style.css">
+</head>
+<body>
 <html lang="en">
 <h1 align="center"> Welcome to Jobscam.ru! </h1>
 	<section class="loginform cf">

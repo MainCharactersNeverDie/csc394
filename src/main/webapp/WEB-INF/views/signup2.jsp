@@ -1,8 +1,8 @@
 <html>
 <head>
 	<title>Registration2</title>
-	<link rel="stylesheet" href="normalize.css">
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="css\normalize.css">
+	<link rel="stylesheet" href="css\style.css">
 </head>
 <body>
 <h1 align="center"> Welcome to Jobscam.ru! </h1>
