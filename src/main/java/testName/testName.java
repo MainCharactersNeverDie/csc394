@@ -2,12 +2,20 @@ package main.java.testName;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class testName {
+	
+	@RequestMapping(value="/signIn", method=RequestMethod.POST)
+	public ModelAndView signIn(Model model, String userName, String password){
+		
+		System.out.println("UserName is "+userName+". Password is "+password+".");
+        
+        return new ModelAndView("WEB-INF/views/userProfile.jsp");
+	}
 
 	@RequestMapping("/profile")
     public ModelAndView profile(Model model) {

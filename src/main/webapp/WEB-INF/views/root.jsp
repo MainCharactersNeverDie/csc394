@@ -1,10 +1,6 @@
-<html>
-<head>
-	<title>Login/Sign Up Page</title>
-	<link rel="stylesheet" href="normalize.css">
-	<link rel="stylesheet" href="style.css">
-</head>
-<body>
+<!DOCTYPE html>
+
+<html lang="en">
 <h1 align="center"> Welcome to Jobscam.ru! </h1>
 	<section class="loginform cf">
 		<form name="login" action="index_submit" method="get" accept-charset="utf-8">
@@ -26,5 +22,6 @@
 			</ul>
 		</form>
 	</section>
+
 </body>
 </html>
