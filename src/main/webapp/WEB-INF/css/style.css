@@ -1,5 +1,5 @@
 html {
-	background: url('https://localhost:8080/tempName/images/wood_pattern.png');
+	background: url('../images/wood_pattern.png');
 	font-size: 10pt;
 }
 label {
