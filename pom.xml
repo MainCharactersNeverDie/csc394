@@ -40,6 +40,11 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
         <version>3.8.1</version>
         <scope>test</scope>
     </dependency>
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>5.1.34</version>
+    </dependency>
 </dependencies>
 
 <build>
@@ -54,6 +59,33 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
                 <server>my-tomcat</server>
                 <path>/tempName</path>
             </configuration>
+        </plugin>
+        <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>sql-maven-plugin</artifactId>
+            <version>1.5</version>
+
+            <!-- JDBC Driver -->
+            <dependencies>
+                <dependency>
+                    <groupId>mysql</groupId>
+                    <artifactId>mysql-connector-java</artifactId>
+                    <version>5.0.5</version>
+                </dependency>
+            </dependencies>
+
+            <configuration>
+                <driver>com.mysql.jdbc.Driver</driver>
+                <url>jdbc:mysql://localhost:3306/csc394</url>
+                <username>root</username>
+                <password></password>
+                <autocommit>true</autocommit>
+                <onError>continue</onError>
+                <srcFiles>
+                    <srcFile>src/sql/test_db.sql</srcFile>
+                </srcFiles>
+            </configuration>
+
         </plugin>
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
