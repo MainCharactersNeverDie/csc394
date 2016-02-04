@@ -1,8 +1,9 @@
+<!DOCTYPE html>
 <html>
 <head>
-	<title>Registration1</title>
-	<link rel="stylesheet" href="css\normalize.css">
-	<link rel="stylesheet" href="css\style.css">
+	<title>Registration</title>
+	<link rel="stylesheet" href="normalize.css">
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <h1 align="center"> Welcome to Jobscam.ru! </h1>
@@ -10,9 +11,10 @@
 		<form name="login" action="index_submit" method="get" accept-charset="utf-8">
 			<ul>
 				<li> I am a...
-				<input type="submit" value="Individual">
-				<input type="submit" value="Company">
+				<input type="radio">Person
+				<input type="radio">Company
 				</li>
+				<br></br>
 				<li>
 					<label for="usermail">Email</label>
 					<input type="email" name="usermail" placeholder="yourname@email.com" required>
