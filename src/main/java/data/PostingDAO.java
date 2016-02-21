@@ -20,28 +20,28 @@ public class PostingDAO{
     }
     public ResultSet retrieveData(Map<String, Map<String, String>> filters){
         String sql = 
-            "SELECT * "               +
-            "FROM "                   +
-            "job_postings posting"          +
-            "LEFT JOIN"               +
-            "experience"            +
-            "ON "                     +
-            "experience.entity_id = posting.post_id" +
-            "LEFT JOIN  "             +
-            "experience_lookup lookup"     +
-            "ON"                      +
-            "experience.exp_id = lookup.exp_id"     +
-            "WHERE"                   +
+            "SELECT * "                               +
+            "FROM "                                   +
+            "job_postings posting "                   +
+            "LEFT JOIN "                              +
+            "experience "                             +
+            "ON "                                     +
+            "experience.entity_id = posting.post_id " +
+            "LEFT JOIN  "                             +
+            "experience_lookup lookup "               +
+            "ON "                                     +
+            "experience.exp_id = lookup.exp_id "      +
+            "WHERE "                                  +
             "lookup.type = 0";
         Iterator<Entry<String, Map<String, String>>> it = filters.entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry<String, Map<String, String>> pair = (Map.Entry)it.next();
-            sql += "AND";
+            sql += " AND ";
             String operator = pair.getKey();
             Iterator<Entry<String, String>> values = pair.getValue().entrySet().iterator();
             while (values.hasNext()) {
                 Map.Entry<String, String> key_value = (Map.Entry)values.next();
-                sql += key_value.getKey() + operator + key_value.getValue();
+                sql += key_value.getKey() + operator + "\'" + key_value.getValue() + "\'";
             }
             it.remove(); // avoids a ConcurrentModificationException
         }

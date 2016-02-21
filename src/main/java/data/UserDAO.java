@@ -9,8 +9,7 @@ public class UserDAO{
     public UserDAO(){
         try {
             conn = DriverManager.getConnection("jdbc:mysql://localhost/csc394?" + "user=root&password=");
-
-        } catch (SQLException ex) {
+} catch (SQLException ex) {
             // handle any errors
             System.out.println("SQLException: " + ex.getMessage());
             System.out.println("SQLState: " + ex.getSQLState());
@@ -19,32 +18,33 @@ public class UserDAO{
     }
     public ResultSet retrieveData(Map<String, Map<String, String>> filters){
         String sql = 
-            "SELECT * "               +
-            "FROM "                   +
-            "users u"                 +
-            "LEFT JOIN"               +
-            "experience e"            +
-            "ON "                     +
-            "e.entity_id = u.user_id" +
-            "LEFT JOIN  "             +
-            "experience_lookup l"     +
-            "ON"                      +
-            "e.exp_id = l.exp_id"     +
-            "WHERE"                   +
-            "l.type = 1";
+            "SELECT * "                          +
+            "FROM "                              +
+            "users "                             +
+            "LEFT JOIN "                         +
+            "experience_lookup lookup "          +
+            "ON "                                +
+            "lookup.entity_id = users.user_id "  +
+            "LEFT JOIN  "                        +
+            "experience "                        +
+            "ON "                                +
+            "experience.exp_id = lookup.exp_id " +
+            "WHERE "                             +
+            "lookup.type = 1 ";
         Iterator<Entry<String, Map<String, String>>> it = filters.entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry<String, Map<String, String>> pair = (Map.Entry)it.next();
-            sql += "AND";
+            sql += " AND ";
             String operator = pair.getKey();
             Iterator<Entry<String, String>> values = pair.getValue().entrySet().iterator();
             while (values.hasNext()) {
                 Map.Entry<String, String> key_value = (Map.Entry)values.next();
-                sql += key_value.getKey() + operator + key_value.getValue();
+                sql += key_value.getKey() + operator + "\'" + key_value.getValue() + "\'";
             }
             it.remove(); // avoids a ConcurrentModificationException
         }
         try{
+            System.out.println(sql);
             Statement stmt   = conn.createStatement();
             ResultSet result = stmt.executeQuery(sql);
             return result;
@@ -106,9 +106,11 @@ public class UserDAO{
     }
     public static void main(String[] args) {
         UserDAO user = new UserDAO();
-        HashMap<String, String> test = new HashMap<String, String>();
-        test.put("first_name", "Test");
-        test.put("last_name", "Test");
+        HashMap<String, Map<String, String>> test = new HashMap<String, Map<String, String>>();
+        HashMap<String, String> test2 = new HashMap<String, String>();
+        test2.put("first_name", "Test");
+        test.put("=", test2);
+        user.retrieveData(test);
     }
 }
 

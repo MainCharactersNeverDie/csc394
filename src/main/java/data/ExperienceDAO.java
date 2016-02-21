@@ -36,7 +36,7 @@ public class ExperienceDAO{
             Iterator<Entry<String, String>> values = pair.getValue().entrySet().iterator();
             while (values.hasNext()) {
                 Map.Entry<String, String> key_value = (Map.Entry)values.next();
-                sql += key_value.getKey() + operator + key_value.getValue();
+                sql += key_value.getKey() + operator + "\'" + key_value.getValue() + "\'";
             }
             it.remove(); // avoids a ConcurrentModificationException
         }
