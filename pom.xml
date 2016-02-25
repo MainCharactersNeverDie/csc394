@@ -82,7 +82,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
                 <autocommit>true</autocommit>
                 <onError>continue</onError>
                 <srcFiles>
-                    <srcFile>src/sql/test_db.sql</srcFile>
+                    <srcFile>src/sql/schema.sql</srcFile>
                 </srcFiles>
             </configuration>
 
