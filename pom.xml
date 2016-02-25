@@ -76,9 +76,9 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 
             <configuration>
                 <driver>com.mysql.jdbc.Driver</driver>
-                <url>jdbc:mysql://localhost:3306/csc394</url>
+                <url>jdbc:mysql://localhost:3306/jobscam</url>
                 <username>root</username>
-                <password></password>
+                <password>Reboot2014!</password>
                 <autocommit>true</autocommit>
                 <onError>continue</onError>
                 <srcFiles>
