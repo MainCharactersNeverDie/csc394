@@ -1,8 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `csc394` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `csc394`;
+CREATE DATABASE  IF NOT EXISTS `jobscam` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `jobscam`;
 -- MySQL dump 10.13  Distrib 5.7.9, for Win32 (AMD64)
 --
--- Host: localhost    Database: csc394
+-- Host: localhost    Database: jobscam
 -- ------------------------------------------------------
 -- Server version	5.7.11-log
 
