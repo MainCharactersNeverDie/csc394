@@ -76,9 +76,9 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 
             <configuration>
                 <driver>com.mysql.jdbc.Driver</driver>
-                <url>jdbc:mysql://localhost:3306/</url>
-                <username>root</username>
-                <password></password>
+                <url>jdbc:mysql://mako.arvixe.com/themoose_jobscam</url>
+                <username>themoose_xxx</username>
+                <password>xxx</password>
                 <autocommit>true</autocommit>
                 <onError>continue</onError>
                 <srcFiles>

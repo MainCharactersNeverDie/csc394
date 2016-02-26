@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `jobscam` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `jobscam`;
 -- MySQL dump 10.13  Distrib 5.7.9, for Win32 (AMD64)
 --
 -- Host: localhost    Database: jobscam
