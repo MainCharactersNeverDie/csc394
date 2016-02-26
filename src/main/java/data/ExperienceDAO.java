@@ -7,15 +7,7 @@ import data.*;
 public class ExperienceDAO{ 
     Connection conn = null;
     public ExperienceDAO(){
-        try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/csc394?" + "user=root&password=");
-
-        } catch (SQLException ex) {
-            // handle any errors
-            System.out.println("SQLException: " + ex.getMessage());
-            System.out.println("SQLState: " + ex.getSQLState());
-            System.out.println("VendorError: " + ex.getErrorCode());
-        }
+        conn = Connector::getConnection();
     }
     public ResultSet retrieveData(Map<String, Map<String, String>> filters){
         String sql = 
