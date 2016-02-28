@@ -67,11 +67,13 @@ DROP TABLE IF EXISTS `experience_lookup`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `experience_lookup` (
+  `lookup_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `entity_id` int(11) unsigned NOT NULL COMMENT 'Post or job seeker',
   `exp_id` int(11) NOT NULL,
   `modifier` int(11) DEFAULT NULL COMMENT 'Depends on type of experience, generally it''s the amount of years',
   `weight` int(11) NOT NULL,
   `type` int(2) NOT NULL DEFAULT '0' COMMENT '0 = post 1 = job seekr',
+  PRIMARY KEY (`lookup_id`),
   UNIQUE KEY `post_id` (`entity_id`,`exp_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -82,14 +84,28 @@ CREATE TABLE `experience_lookup` (
 
 LOCK TABLES `experience_lookup` WRITE;
 /*!40000 ALTER TABLE `experience_lookup` DISABLE KEYS */;
-INSERT INTO `experience_lookup` VALUES 
-(201,10001,10001,0,0),(202,10002,10002,0,0),(203,10003,10003,0,0),
-(204,10004,10004,0,0),(205,10005,10005,0,0),(206,10006,10006,0,0),
-(207,10007,10007,0,0),(208,10008,10008,0,0),(209,10009,10009,0,0),
-(210,10010,10010,0,0),(211,10011,10011,0,1),(212,10012,10012,0,1),
-(213,10013,10013,0,1),(214,10014,10014,0,1),(215,10015,10015,0,1),
-(216,10016,10016,0,1),(217,10017,10017,0,1),(218,10018,10018,0,1),
-(219,10019,10019,0,1),(220,10020,10020,0,1);
+INSERT INTO `experience_lookup` (`lookup_id`, `entity_id`, `exp_id`, `modifier`, `weight`, `type`)
+VALUES
+	(2, 201, 10001, 10001, 0, 0),
+	(3, 202, 10002, 10002, 0, 0),
+	(4, 203, 10003, 10003, 0, 0),
+	(5, 204, 10004, 10004, 0, 0),
+	(6, 205, 10005, 10005, 0, 0),
+	(7, 206, 10006, 10006, 0, 0),
+	(8, 207, 10007, 10007, 0, 0),
+	(9, 208, 10008, 10008, 0, 0),
+	(10, 209, 10009, 10009, 0, 0),
+	(11, 210, 10010, 10010, 0, 0),
+	(12, 211, 10011, 10011, 0, 1),
+	(13, 212, 10012, 10012, 0, 1),
+	(14, 213, 10013, 10013, 0, 1),
+	(15, 214, 10014, 10014, 0, 1),
+	(16, 215, 10015, 10015, 0, 1),
+	(17, 216, 10016, 10016, 0, 1),
+	(18, 217, 10017, 10017, 0, 1),
+	(19, 218, 10018, 10018, 0, 1),
+	(20, 219, 10019, 10019, 0, 1),
+	(21, 220, 10020, 10020, 0, 1);
 /*!40000 ALTER TABLE `experience_lookup` ENABLE KEYS */;
 UNLOCK TABLES;
 
