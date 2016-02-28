@@ -4,12 +4,12 @@ import java.util.Map.Entry;
 import java.sql.*;
 import data.*;
 
-public class UserDAO{ 
+public class UserDAO implements DAO{ 
     Connection conn = null;
     public UserDAO(){
-        conn = Connector::getConnection();
+        conn = Connector.getConnection();
     }
-    public ResultSet retrieveData(Map<String, Map<String, String>> filters){
+    public HashMap<Integer, HashMap<String, Object>> retrieveData(HashMap<String, HashMap<String, String>> filters){
         String sql = 
             "SELECT * "                          +
             "FROM "                              +
@@ -24,7 +24,7 @@ public class UserDAO{
             "experience.exp_id = lookup.exp_id " +
             "WHERE "                             +
             "lookup.type = 1 ";
-        Iterator<Entry<String, Map<String, String>>> it = filters.entrySet().iterator();
+        Iterator<Entry<String, HashMap<String, String>>> it = filters.entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry<String, Map<String, String>> pair = (Map.Entry)it.next();
             sql += " AND ";
@@ -37,9 +37,31 @@ public class UserDAO{
             it.remove(); // avoids a ConcurrentModificationException
         }
         try{
-            System.out.println(sql);
             Statement stmt   = conn.createStatement();
-            ResultSet result = stmt.executeQuery(sql);
+            ResultSet set = stmt.executeQuery(sql);
+            HashMap<Integer, HashMap<String, Object>> result = new HashMap<Integer, HashMap<String, Object>>();
+            do{
+                HashMap<String, Object> entry = new HashMap<String, Object>();
+                entry.put("first_name",    set.getObject("first_name"));
+                entry.put("last_name",     set.getObject("last_name"));
+                entry.put("address",       set.getObject("address"));
+                entry.put("phone",         set.getObject("phone"));
+                entry.put("email",         set.getObject("email"));
+                entry.put("type",          set.getObject("type"));
+                entry.put("company_name",  set.getObject("company_name"));
+                entry.put("password_hash", set.getObject("password_hash"));
+                HashMap<String, HashMap<String, String>> experienceFilter = new HashMap<String, HashMap<String, String>>();
+                HashMap<String, String> equalsFilter = new HashMap<String, String>();
+                Integer user_id = set.getInt("user_id");
+                equalsFilter.put("entity_id", user_id.toString());
+                equalsFilter.put("type", "1");
+                experienceFilter.put("=", equalsFilter);
+                DTO experienceDTO = new DTO();
+                experienceDTO.populateData("Experience", experienceFilter);
+                HashMap<Integer, HashMap<String, Object>> experience = experienceDTO.getMap();
+                entry.put("experience", experience);
+                result.put(user_id, entry);
+            }while(set.next());
             return result;
         } catch (SQLException ex) {
             // handle any errors
@@ -98,12 +120,12 @@ public class UserDAO{
         return 0;
     }
     public static void main(String[] args) {
-        UserDAO user = new UserDAO();
+      /*  UserDAO user = new UserDAO();
         HashMap<String, Map<String, String>> test = new HashMap<String, Map<String, String>>();
         HashMap<String, String> test2 = new HashMap<String, String>();
         test2.put("first_name", "Test");
         test.put("=", test2);
-        user.retrieveData(test);
+        user.retrieveData(test);*/
     }
 }
 

@@ -1,16 +1,15 @@
-
 package data;
 import java.util.*;
 import java.util.Map.Entry;
 import java.sql.*;
 import data.*;
 
-public class PostingDAO{ 
+public class PostingDAO implements DAO{ 
     Connection conn = null;
     public PostingDAO(){
-        conn = Connector::getConnection();
+        conn = Connector.getConnection();
     }
-    public ResultSet retrieveData(Map<String, Map<String, String>> filters){
+    public HashMap<Integer, HashMap<String, Object>> retrieveData(HashMap<String, HashMap<String, String>> filters){
         String sql = 
             "SELECT * "                               +
             "FROM "                                   +
@@ -25,7 +24,7 @@ public class PostingDAO{
             "experience.exp_id = lookup.exp_id "      +
             "WHERE "                                  +
             "lookup.type = 0";
-        Iterator<Entry<String, Map<String, String>>> it = filters.entrySet().iterator();
+        Iterator<Entry<String, HashMap<String, String>>> it = filters.entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry<String, Map<String, String>> pair = (Map.Entry)it.next();
             sql += " AND ";
@@ -39,7 +38,28 @@ public class PostingDAO{
         }
         try{
             Statement stmt   = conn.createStatement();
-            ResultSet result = stmt.executeQuery(sql);
+            ResultSet set = stmt.executeQuery(sql);
+            HashMap<Integer, HashMap<String, Object>> result = new HashMap<Integer, HashMap<String, Object>>();
+            do{
+                HashMap<String, Object> entry = new HashMap<String, Object>();
+                entry.put("user_id",     set.getObject("user_id"));
+                entry.put("title",       set.getObject("title"));
+                entry.put("description", set.getObject("description"));
+                entry.put("pay_min",     set.getObject("pay_min"));
+                entry.put("pay_max",     set.getObject("pay_max"));
+
+                HashMap<String, HashMap<String, String>> experienceFilter = new HashMap<String, HashMap<String, String>>();
+                HashMap<String, String> equalsFilter = new HashMap<String, String>();
+                Integer post_id = set.getInt("post_id");
+                equalsFilter.put("entity_id", post_id.toString());
+                equalsFilter.put("type", "0");
+                experienceFilter.put("=", equalsFilter);
+                DTO experienceDTO = new DTO();
+                experienceDTO.populateData("Experience", experienceFilter);
+                HashMap<Integer, HashMap<String, Object>> experience = experienceDTO.getMap();
+                entry.put("experience", experience);
+                result.put(post_id, entry);
+            }while(set.next());
             return result;
         } catch (SQLException ex) {
             // handle any errors

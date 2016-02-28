@@ -4,12 +4,12 @@ import java.util.Map.Entry;
 import java.sql.*;
 import data.*;
 
-public class ExperienceDAO{ 
+public class ExperienceDAO implements DAO{ 
     Connection conn = null;
     public ExperienceDAO(){
-        conn = Connector::getConnection();
+        conn = Connector.getConnection();
     }
-    public ResultSet retrieveData(Map<String, Map<String, String>> filters){
+    public HashMap<Integer, HashMap<String, Object>> retrieveData(HashMap<String, HashMap<String, String>> filters){
         String sql = 
             "SELECT * "                +
             "FROM "                    +
@@ -18,7 +18,7 @@ public class ExperienceDAO{
             "experience_lookup lookup" +
             "ON"                       +
             "experience.exp_id = lookup.exp_id";
-        Iterator<Entry<String, Map<String, String>>> it = filters.entrySet().iterator();
+        Iterator<Entry<String, HashMap<String, String>>> it = filters.entrySet().iterator();
         if(it.hasNext())
             sql += " WHERE ";
         while (it.hasNext()) {
@@ -34,7 +34,18 @@ public class ExperienceDAO{
         }
         try{
             Statement stmt   = conn.createStatement();
-            ResultSet result = stmt.executeQuery(sql);
+            ResultSet set = stmt.executeQuery(sql);
+            HashMap<Integer, HashMap<String, Object>> result = new HashMap<Integer, HashMap<String, Object>>();
+            do{
+                HashMap<String, Object> entry = new HashMap<String, Object>();
+                entry.put("entity_id", set.getObject("weight"));
+                entry.put("modifier",  set.getObject("modifier"));
+                entry.put("weight",    set.getObject("entity_id"));
+                entry.put("type",      set.getObject("text"));
+                entry.put("text",      set.getObject("type"));
+
+                result.put(set.getInt("lookup_id"), entry);
+            }while(set.next());
             return result;
         } catch (SQLException ex) {
             // handle any errors
