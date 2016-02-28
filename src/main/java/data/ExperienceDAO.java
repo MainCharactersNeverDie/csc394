@@ -13,20 +13,26 @@ public class ExperienceDAO implements DAO{
         String sql = 
             "SELECT * "                +
             "FROM "                    +
-            "experience"               +
+            "experience "               +
             "LEFT JOIN  "              +
-            "experience_lookup lookup" +
-            "ON"                       +
-            "experience.exp_id = lookup.exp_id";
+            "experience_lookup lookup " +
+            "ON "                       +
+            "experience.exp_id = lookup.exp_id ";
         Iterator<Entry<String, HashMap<String, String>>> it = filters.entrySet().iterator();
         if(it.hasNext())
             sql += " WHERE ";
+        boolean first = true;
         while (it.hasNext()) {
             Map.Entry<String, Map<String, String>> pair = (Map.Entry)it.next();
-            sql += "AND";
             String operator = pair.getKey();
             Iterator<Entry<String, String>> values = pair.getValue().entrySet().iterator();
             while (values.hasNext()) {
+                if(!first){
+                    sql += " AND ";
+                }else{
+                    first = false;
+                }
+
                 Map.Entry<String, String> key_value = (Map.Entry)values.next();
                 sql += key_value.getKey() + operator + "\'" + key_value.getValue() + "\'";
             }
@@ -36,16 +42,16 @@ public class ExperienceDAO implements DAO{
             Statement stmt   = conn.createStatement();
             ResultSet set = stmt.executeQuery(sql);
             HashMap<Integer, HashMap<String, Object>> result = new HashMap<Integer, HashMap<String, Object>>();
-            do{
+            while(set.next()){
                 HashMap<String, Object> entry = new HashMap<String, Object>();
-                entry.put("entity_id", set.getObject("weight"));
+                entry.put("entity_id", set.getObject("entity_id"));
                 entry.put("modifier",  set.getObject("modifier"));
-                entry.put("weight",    set.getObject("entity_id"));
-                entry.put("type",      set.getObject("text"));
-                entry.put("text",      set.getObject("type"));
+                entry.put("weight",    set.getObject("weight"));
+                entry.put("type",      set.getObject("type"));
+                entry.put("text",      set.getObject("text"));
 
                 result.put(set.getInt("lookup_id"), entry);
-            }while(set.next());
+            }
             return result;
         } catch (SQLException ex) {
             // handle any errors

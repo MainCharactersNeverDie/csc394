@@ -27,16 +27,17 @@ public class PostingDAO implements DAO{
         Iterator<Entry<String, HashMap<String, String>>> it = filters.entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry<String, Map<String, String>> pair = (Map.Entry)it.next();
-            sql += " AND ";
             String operator = pair.getKey();
             Iterator<Entry<String, String>> values = pair.getValue().entrySet().iterator();
             while (values.hasNext()) {
+                sql += " AND ";
                 Map.Entry<String, String> key_value = (Map.Entry)values.next();
                 sql += key_value.getKey() + operator + "\'" + key_value.getValue() + "\'";
             }
             it.remove(); // avoids a ConcurrentModificationException
         }
         try{
+            System.out.println(sql);
             Statement stmt   = conn.createStatement();
             ResultSet set = stmt.executeQuery(sql);
             HashMap<Integer, HashMap<String, Object>> result = new HashMap<Integer, HashMap<String, Object>>();

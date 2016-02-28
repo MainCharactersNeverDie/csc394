@@ -23,24 +23,25 @@ public class UserDAO implements DAO{
             "ON "                                +
             "experience.exp_id = lookup.exp_id " +
             "WHERE "                             +
-            "lookup.type = 1 ";
+            "(lookup.type = 1 OR lookup.type IS NULL)";
         Iterator<Entry<String, HashMap<String, String>>> it = filters.entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry<String, Map<String, String>> pair = (Map.Entry)it.next();
-            sql += " AND ";
             String operator = pair.getKey();
             Iterator<Entry<String, String>> values = pair.getValue().entrySet().iterator();
             while (values.hasNext()) {
+                sql += " AND ";
                 Map.Entry<String, String> key_value = (Map.Entry)values.next();
                 sql += key_value.getKey() + operator + "\'" + key_value.getValue() + "\'";
             }
             it.remove(); // avoids a ConcurrentModificationException
         }
         try{
+            sql += " GROUP BY user_id";
             Statement stmt   = conn.createStatement();
             ResultSet set = stmt.executeQuery(sql);
             HashMap<Integer, HashMap<String, Object>> result = new HashMap<Integer, HashMap<String, Object>>();
-            do{
+            while(set.next()){
                 HashMap<String, Object> entry = new HashMap<String, Object>();
                 entry.put("first_name",    set.getObject("first_name"));
                 entry.put("last_name",     set.getObject("last_name"));
@@ -61,9 +62,10 @@ public class UserDAO implements DAO{
                 HashMap<Integer, HashMap<String, Object>> experience = experienceDTO.getMap();
                 entry.put("experience", experience);
                 result.put(user_id, entry);
-            }while(set.next());
+            }
             return result;
         } catch (SQLException ex) {
+            System.out.println("TEST");
             // handle any errors
             System.out.println("SQLException: " + ex.getMessage());
             System.out.println("SQLState: " + ex.getSQLState());
@@ -120,12 +122,17 @@ public class UserDAO implements DAO{
         return 0;
     }
     public static void main(String[] args) {
-      /*  UserDAO user = new UserDAO();
-        HashMap<String, Map<String, String>> test = new HashMap<String, Map<String, String>>();
+        UserDAO user = new UserDAO();
+        HashMap<String, HashMap<String, String>> test = new HashMap<String, HashMap<String, String>>();
         HashMap<String, String> test2 = new HashMap<String, String>();
-        test2.put("first_name", "Test");
+        test2.put("first_name", "test");
         test.put("=", test2);
-        user.retrieveData(test);*/
+        DTO dtoTest = new DTO();
+        dtoTest.populateData("user", test);
+        do{
+            System.out.println(dtoTest.getId());
+            System.out.println(dtoTest.getValue("address"));
+        }while(dtoTest.next());
     }
 }
 

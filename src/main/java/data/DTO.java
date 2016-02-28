@@ -5,8 +5,8 @@ import java.sql.*;
 import data.*;
 
 public class DTO{ 
-    private Integer current_index;
-    private HashMap<String, Object> current_row;
+    private Iterator<Entry<Integer, HashMap<String, Object>>> iterator;
+    private Map.Entry<Integer, Map<String, Object>> current_row;
     private DAO table;
     private HashMap<Integer, HashMap<String, Object>> result;
 
@@ -27,30 +27,43 @@ public class DTO{
             }
         }
         result = table.retrieveData(filter);
+        iterator = result.entrySet().iterator();
+        if(iterator.hasNext()){
+            current_row = (Map.Entry)iterator.next();
+        }
     }
 
     public Object getValue(String key, Integer idx){
         if(result.containsKey(idx)){
-            current_index = idx;
-            current_row = result.get(idx);
-            return current_row.get(key);
+            goToIndex(idx);
+            return current_row.getValue().get(key);
         }
         return false;
     }
     public Object getValue(String key){
-        return current_row.get(key);
+        if(current_row.getValue().containsKey(key))
+            return current_row.getValue().get(key);
+        return false;
+    }
+    public Integer getId(){
+        return current_row.getKey();
     }
     public boolean goToIndex(Integer idx){
         if(result.containsKey(idx)){
-            current_index = idx;
+            //Reset if requested idx is less than where we are
+            if(idx < current_row.getKey())
+                iterator = result.entrySet().iterator();
+
+            while(current_row.getKey() != idx && iterator.hasNext()){
+                current_row = (Map.Entry)iterator.next();
+            }
             return true;
         }
         return false;
     }
     public boolean next(){
-        if(result.containsKey(current_index + 1)){
-            ++current_index;
-            current_row = result.get(current_index);
+        if(iterator.hasNext()){
+            current_row = (Map.Entry)iterator.next();
             return true;
         }
         return false;
