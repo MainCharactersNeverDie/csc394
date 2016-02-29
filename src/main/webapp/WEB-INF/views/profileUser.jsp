@@ -7,9 +7,24 @@
 </head>
 <body>
 
+<h1 align="center"> Welcome to Jobscam.ru! </h1>
+
+<h4 align="center">
+<a href="register.html">Register 1</a>
+<a href="registration2.html">Register 2</a>
+<a href="profileUser.html">User Profile</a>
+<a href="profileComp.html">Company Profile</a>
+<a href="culturequiz.html">Culture Quiz</a>
+<a href="techquiz.html">Tech Quiz</a>
+<a href="postJobs.html">Post a Job</a>
+<a href="viewEmployee.html">View Matched Employees</a>
+</h4>
+
 	<section class="loginform cf">
 		<form name="login" action="index_submit" method="get" accept-charset="utf-8">
-
+		          <!-- Image -->
+		          <center><img class="portrait" src="image.jpg" alt="John Smith"/></center>
+          <!-- End Image -->
           <!-- Contact-->
           <div class="self" align="center">
             <h3 class="name">John Smith <br />
@@ -27,14 +42,14 @@
           <h3 class="culture" align="center">Culture<br /></h3>
           <div class="culture" align="center">
           <ul>
-          <li> Hamster Culture 4 lyfe sonnnnn (idk maybe insert culture score here?)</li>
+          <li> Hamster Culture 4 lyfe sonnnnn</li>
           </div> <br />
           <!-- End Culture -->
         </div>
         <!-- Begin 1st Row -->
         <div class="entry" align="center">
           <h3>Profile Information</h3>
-          <p> hamster profile, i love eating seeds</p>
+          <p> hamster profile, i love eating seeds and crashing webpages with my sicc pix</p>
         </div><br />
         <!-- End 1st Row -->
 
