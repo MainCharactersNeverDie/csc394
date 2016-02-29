@@ -3,8 +3,8 @@
 trap ctrl_c SIGINT
 trap ctrl_c SIGTERM
 function ctrl_c() {
-    exec mysql.server stop;
+    exec mysqld -u root shutdown;
 }
-mysql.server start
+mysqld schema.sql
 mvn sql:execute tomcat7:run-war;
 
