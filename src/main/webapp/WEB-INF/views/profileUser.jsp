@@ -10,14 +10,15 @@
 <h1 align="center"> Welcome to Jobscam.ru! </h1>
 
 <h4 align="center">
-<a href="register.html">Register 1</a>
-<a href="registration2.html">Register 2</a>
-<a href="profileUser.html">User Profile</a>
-<a href="profileComp.html">Company Profile</a>
-<a href="culturequiz.html">Culture Quiz</a>
-<a href="techquiz.html">Tech Quiz</a>
-<a href="postJobs.html">Post a Job</a>
-<a href="viewEmployee.html">View Matched Employees</a>
+<a href="root.html" class="button-link">Home</a>
+<a href="signup.html" class="button-link">Register 1</a>
+<a href="signup2.html" class="button-link">Register 2</a>
+<a href="profileUser.html" class="button-link">User Profile</a>
+<a href="profileComp.html" class="button-link">Company Profile</a>
+<a href="culturequiz.html" class="button-link">Culture Quiz</a>
+<a href="techquiz.html" class="button-link">Tech Quiz</a>
+<a href="postJobs.html" class="button-link">Post a Job</a>
+<a href="viewResult.html" class="button-link">View Matched Employees</a>
 </h4>
 
 	<section class="loginform cf">
