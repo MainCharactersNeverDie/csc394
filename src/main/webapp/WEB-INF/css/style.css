@@ -1,5 +1,5 @@
 html {
-	background: url('../images/wood_pattern.png');
+	background: url('http://subtlepatterns.com/patterns/wood_pattern.png');
 	font-size: 10pt;
 }
 label {
@@ -64,3 +64,8 @@ label {
 	border-radius: 3px;
 	text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3);
 }
+
+.hamsterTable { width:400px;background-color:#fae1e1;font-size:12px; }
+.hamsterTable th { background-color:#140057;color:white;width:50%;font-variant:small-caps; }
+.hamsterTable td, .myOtherTable th { padding:5px;border:2; }
+.hamsterTable td { border-bottom:1px solid #BDB76B;height:80px; }
