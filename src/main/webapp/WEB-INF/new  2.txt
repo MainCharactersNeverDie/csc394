@@ -1,0 +1,23 @@
+\section*{1}
+\begin{lemma}
+Let $f: (R,+,*) \rightarrow (S,\circ,\star)$ be a ring homomorphism and let $\bar{f}:R/ker(f) \rightarrow S$ be $\bar{f}(x+ker(f))=f(x)$.  Then $\bar{f}$ is a ring homomorphism and $\bar{f}$ is one-to-one.
+\end{lemma}
+\begin{proof}
+Let $f: (R,+,*) \rightarrow (S,\circ,\star)$ be a ring homomorphism and let $\bar{f}:R/ker(f) \rightarrow S$ be $\bar{f}(x+ker(f))=f(x)$.  We must show that $\bar{f}$ is a ring homomorphism and $\bar{f}$ is one-to-one.  
+
+First we will show that $\bar{f}$ is a ring homomorphism.  Let $x+ker(f),y+ker(f) \in R/ker(f)$.  Note that $\bar{f}(x+ker(f)+y+ker(f))= \bar{f}(x+y+ker(f))=f(x+y)=f(x)\star f(y)=\bar{f}(x+ker(f))\star \bar{f}(y+ker(f))$.  Thus $\bar{f}$ preserves addition.  Similarly $\bar{f}((x+ker(f))*(y+ker(f)))= \bar{f}(x*y+ker(f))=f(x*y)=f(x)\circ f(y)=\bar{f}(x+ker(f))\circ \bar{f}(y+ker(f))$.  Thus $\bar{f}$ preserves multiplication.  Since $\bar{f}$ preserves addition and multiplication $\bar{f}$ is a homomorphism as desired.
+
+Now we must show that $\bar{f}$ is one-to-one.  Let $x+ker(f),y+ker(f) \in R/ker(f)$ such that $\bar{f}(x+ker(f))=\bar{f}(y+ker(f))$.  Then $f(x)=f(y)$, thus $f(x)-f(y)=0$.  But this means that $f(x-y)=0$, so $x-y \in ker(f)$ by definition.  Since $x-y \in ker(f)$, $x+ker(f)=y+ker(f)$ as desired.
+\end{proof}
+
+\section*{2}
+\begin{lemma}
+Let $f: (R,+,*) \rightarrow (S,\circ,\star)$ be a ring homomorphism.  Then $f$ is one-to-one iff $ker(f)=\{0\}$.
+\end{lemma}
+\begin{proof}
+Let $f: (R,+,*) \rightarrow (S,\circ,\star)$ be a ring homomorphism. We must show that of $f$ is one-to-one then $ker(f)=\{0\}$ and if $ker(f)=\{0\}$ then $f$ is one-to-one.
+
+Suppose $f$ is one-to-one.  Since $f$ is a homomorphism $f(0)=0$.  Also, since $f$ is one-to-one there are no other members of $R$ that are sent to $0$.  Thus $ker(f)=\{0\}$ by definition.
+
+Now suppose that $ker(f) = \{0\}$.  Let $x,y \in R$ such that $f(x)=f(y)$.  Thus we have that $f(x)-f(y)=0$.  Since $f$ is a homomorphism, $f(x-y)=0$.  Thus $x-y$ is in the kernel of $f$, but since $ker(f)=\{0\}$, $x-y=0$.  Thus $x=y$ as desired.
+\end{proof}

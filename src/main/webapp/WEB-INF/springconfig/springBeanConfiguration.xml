@@ -16,4 +16,7 @@
 		<property name="password" value="toor" />
 	</bean>
  -->
+
+	<bean id="loginHelper" class="main.java.testName.LoginHelper">
+	</bean>
 </beans>
