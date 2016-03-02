@@ -56,7 +56,7 @@ public class Algorithm {
 		System.out.println(js);
 		for (Job j : js) {
 			for (User u : uls.applicantlist()) {
-				result.add(new Result(u, j.getTitle(), Score(u,cultureQuestions), Score(u,techQuestions), Score(u, allQuestions)));
+				result.add(new Result(u, j.getTitle(), Score(u,cultureQuestions), Score(u,techQuestions), Score(u, allQuestions),uls.getUserDetails(u).getName()));
 			}
 		}
 		return result;

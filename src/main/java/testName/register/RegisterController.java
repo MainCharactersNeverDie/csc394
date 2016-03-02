@@ -4,6 +4,7 @@ import javax.mail.MessagingException;
 
 import main.java.testName.Group;
 import main.java.testName.userService.User;
+import main.java.testName.userService.UserDetails;
 import main.java.testName.userService.UserLoginService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,7 +69,7 @@ public class RegisterController {
 		ServletRequestAttributes atter = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
 		User user=(User)atter.getAttribute("User", atter.SCOPE_SESSION);
 		
-		uls.finalizeUser(user);
+		uls.finalizeUser(user, new UserDetails(name,ssn,address,number));
 		
 		System.out.println("Finalized:  username: "+user.getUsername()+ " password: "+ user.getPassword());
 		return new ModelAndView("redirect:/");

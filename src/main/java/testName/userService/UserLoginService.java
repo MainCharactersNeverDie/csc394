@@ -18,9 +18,11 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 public class UserLoginService implements UserDetailsService{
 
 	private static volatile ConcurrentHashMap<String, User> users = new ConcurrentHashMap<>();
+	private static volatile ConcurrentHashMap<User, UserDetails> usersDetails = new ConcurrentHashMap<>();
+	
 	static {
-		addUser(Applicant,"app@app.app","apppass");
-		addUser(Company,"co@co.co","copass");
+		finalizeUser(new User(Applicant,"app@app.app","apppass"), new UserDetails("app",555,"test",444));
+		finalizeUser(new User(Company,"co@co.co","copass"), new UserDetails("co",565,"test",432));
 	}
 	
 	@Override
@@ -36,14 +38,6 @@ public class UserLoginService implements UserDetailsService{
 	private void addUserToSecurityContext(User user) {
 
 	}
-
-	public static boolean addUser(Group userGroup, String username, String password){
-		if(users.containsKey(username)){
-			return false;
-		}
-		users.put(username,new User(userGroup, username, password));
-		return true;
-	}
 	
 	public User getLogedInUser(){
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -58,8 +52,9 @@ public class UserLoginService implements UserDetailsService{
 		return !users.containsKey(username);
 	}
 	
-	public void finalizeUser(User user){
+	public static void finalizeUser(User user, UserDetails userDs){
 		users.put(user.getUsername(),user);
+		usersDetails.put(user,userDs);
 	}
 	
 	public List<User> applicantlist(){
@@ -70,5 +65,9 @@ public class UserLoginService implements UserDetailsService{
 			}
 		}
 		return res;
+	}
+	
+	public UserDetails getUserDetails(User u){
+		return usersDetails.get(u);
 	}
 }

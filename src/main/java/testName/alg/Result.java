@@ -8,13 +8,15 @@ public class Result {
 	private double techScore;
 	private double cultureScore;
 	private double overalScore;
+	private String name;
 	
-	public Result(User userIn, String jobtitleIn, double techScoreIn, double cultureScoreIn, double overalScoreIn){
+	public Result(User userIn, String jobtitleIn, double techScoreIn, double cultureScoreIn, double overalScoreIn, String nameIn){
 		user=userIn;
 		jobtitle=jobtitleIn;
 		techScore=techScoreIn;
 		cultureScore=cultureScoreIn;
 		overalScore=overalScoreIn;
+		name=nameIn;
 	}
 	
 	public User getUser(){
@@ -35,5 +37,9 @@ public class Result {
 	
 	public double getOveralScore(){
 		return overalScore;
+	}
+	
+	public String getName(){
+		return name;
 	}
 }
