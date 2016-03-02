@@ -1,5 +1,7 @@
 package main.java.testName;
 
+import main.java.testName.questions.Question;
+import main.java.testName.questions.QuestionDAO;
 import main.java.testName.userService.User;
 import main.java.testName.userService.UserLoginService;
 
@@ -11,6 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ApplicantController {
+	@Autowired
+	private QuestionDAO qdoa;
 	@Autowired
 	private UserLoginService uls;
 	
@@ -30,21 +34,27 @@ public class ApplicantController {
 		return new ModelAndView("WEB-INF/views/appProfile.jsp");
 	}
 	
-	@RequestMapping(value="/cultureQuiz",method=RequestMethod.GET)
-	public ModelAndView culterQuiz(){
+	@RequestMapping(value="/question",method=RequestMethod.GET)
+	public ModelAndView question(){
 		User user=uls.getLogedInUser();
 		if(user.getUserGroup()!=Group.Applicant){
 			return new ModelAndView("reditect:503");
 		}
-		return new ModelAndView("WEB-INF/views/cultureQuiz.jsp");
+		Question q=qdoa.getUserQuesition(user);
+		ModelAndView mav= new ModelAndView(q.getQuestionStyle());
+		mav.addObject("answerList",q.getAnswerList());
+		return mav;
 	}
 	
-	@RequestMapping(value="/techQuiz",method=RequestMethod.GET)
-	public ModelAndView techQuiz(){
+	@RequestMapping(value="/question",method=RequestMethod.POST)
+	public ModelAndView questionAnswered(String answer){
 		User user=uls.getLogedInUser();
 		if(user.getUserGroup()!=Group.Applicant){
 			return new ModelAndView("reditect:503");
 		}
-		return new ModelAndView("WEB-INF/views/techQuiz.jsp");
+		
+		Question q=qdoa.getUserQuesition(user);
+		qdoa.answerQuestion(user,q,answer);
+		return question();
 	}
 }

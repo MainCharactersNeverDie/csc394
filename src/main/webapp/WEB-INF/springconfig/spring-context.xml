@@ -43,4 +43,5 @@
 	<bean id="applicantController" class="main.java.testName.ApplicantController"></bean>
 	<bean id="companyController" class="main.java.testName.CompanyController"></bean>
 	<bean id="UserLoginService" class="main.java.testName.userService.UserLoginService"></bean>
+	<bean id="qdoa" class="main.java.testName.questions.QuestionDAO"></bean>
 </beans>
