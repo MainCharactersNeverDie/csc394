@@ -30,4 +30,9 @@ public class QuestionDAO {
 			userIndex.put(u,userIndex.get(u)+1);
 			answers.put(new UserQuestionPair(u,q), answer);
 	}
+	
+	public String getAnswer(User u,Question q){
+		String res= answers.get(new UserQuestionPair(u,q));
+		return (res!=null)?res:"";
+	}
 }

@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.List;
 
 import main.java.testName.Group;
+import main.java.testName.jobs.Job;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -99,6 +100,5 @@ public class User implements UserDetails{
 			return false;
 		return true;
 	}
-
 	
 }

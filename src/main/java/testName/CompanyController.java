@@ -1,6 +1,8 @@
 package main.java.testName;
 
 import main.java.testName.alg.Algorithm;
+import main.java.testName.jobs.Job;
+import main.java.testName.jobs.JobDAO;
 import main.java.testName.userService.User;
 import main.java.testName.userService.UserLoginService;
 
@@ -12,6 +14,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class CompanyController {
+	
+	@Autowired 
+	private JobDAO jdao;
+	
 	@Autowired
 	private UserLoginService uls;
 	
@@ -43,6 +49,18 @@ public class CompanyController {
 		return new ModelAndView("WEB-INF/views/postJob.jsp");
 	}
 	
+	@RequestMapping(value="/postJob",method=RequestMethod.POST)
+	public ModelAndView postJobSubmit(String title, String desc, String address, String culscore, String ed, String exp){
+		User user=uls.getLogedInUser();
+		if(user.getUserGroup()!=Group.Company){
+			return new ModelAndView("reditect:503");
+		}
+		
+		jdao.addJob(user, new Job(title,desc,address,culscore,ed,exp));
+		
+		return new ModelAndView("redirect:/jobResults");
+	}
+	
 	@RequestMapping(value="/jobResults",method=RequestMethod.GET)
 	public ModelAndView jobResults(){
 		User user=uls.getLogedInUser();
@@ -51,7 +69,7 @@ public class CompanyController {
 		}
 		
 		ModelAndView mav= new ModelAndView("WEB-INF/views/jobResults.jsp");
-		mav.addObject("res", alg.getMatches());
+		mav.addObject("res", alg.getMatches(jdao.getJobsList(user)));
 		return mav;
 	}
 }

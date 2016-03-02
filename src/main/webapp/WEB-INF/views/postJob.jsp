@@ -13,7 +13,7 @@
 <h3 align="center"> Post a Job</h3>
 
 	<section class="loginform cf">
-		<form name="login" action="index_submit" method="get" accept-charset="utf-8">
+		<form name="login" action="postJob" method="POST" accept-charset="utf-8">
 			<ul>
 				<li>
 					<label for="title">Job Title</label>
@@ -30,7 +30,7 @@
 					<input type="culscore" name="culscore" placeholder="Optimal Culture Score" required></li>
 				<li>
 					<label for="education">Education Level Needed</label>
-					 <select>
+					 <select name="ed">
 						  <option value="undergrad">Undergrad</option>
 						  <option value="graduate">Graduate</option>
 						  <option value="no diploma">No Diploma</option>
@@ -38,7 +38,7 @@
 				</li><br />
 				<li>
 					<label for="experience">Experience Level Needed</label>
-					 <select>
+					 <select name="exp">
 						  <option value="no experience">No Experience</option>
 						  <option value="novice">Novice</option>
 						  <option value="Experienced">Experienced</option>

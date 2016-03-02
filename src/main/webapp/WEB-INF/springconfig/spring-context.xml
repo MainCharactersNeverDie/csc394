@@ -44,4 +44,5 @@
 	<bean id="companyController" class="main.java.testName.CompanyController"></bean>
 	<bean id="UserLoginService" class="main.java.testName.userService.UserLoginService"></bean>
 	<bean id="qdoa" class="main.java.testName.questions.QuestionDAO"></bean>
+	<bean id="jdoa" class="main.java.testName.jobs.JobDAO"></bean>
 </beans>

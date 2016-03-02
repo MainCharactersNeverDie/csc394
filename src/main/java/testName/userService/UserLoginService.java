@@ -3,7 +3,8 @@ package main.java.testName.userService;
 import static main.java.testName.Group.Applicant;
 import static main.java.testName.Group.Company;
 
-import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 import main.java.testName.Group;
@@ -59,5 +60,15 @@ public class UserLoginService implements UserDetailsService{
 	
 	public void finalizeUser(User user){
 		users.put(user.getUsername(),user);
+	}
+	
+	public List<User> applicantlist(){
+		List<User> res= new LinkedList<User>();
+		for(User u:users.values()){
+			if(u.getUserGroup()==Group.Applicant){
+				res.add(u);
+			}
+		}
+		return res;
 	}
 }
