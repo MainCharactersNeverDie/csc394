@@ -1,8 +1,8 @@
 package data;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Map.Entry;
-import java.sql.*;
-import data.*;
 
 public class DTO{ 
     private Iterator<Entry<Integer, HashMap<String, Object>>> iterator;

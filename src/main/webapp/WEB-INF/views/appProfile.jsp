@@ -117,7 +117,7 @@
         <div class="entry"  align="center">
         <h3>Misc</h3>
         	<ul class="works">
-        		<li>more hamser stuff if needed idk<a href="1.jpg" rel="gallery" title="Lorem ipsum dolor sit amet."><img src="images/image.jpg" alt="" /></a></li>
+        		<li>more hamser stuff if needed idk</li>
         	</ul>
         </div>
       </div>

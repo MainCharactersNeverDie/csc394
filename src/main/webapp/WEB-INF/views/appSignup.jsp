@@ -11,31 +11,31 @@
 <%@ include file="webParts/appBar.jsp" %>
 
 	<section class="loginform cf">
-		<form name="login" action="index_submit" method="get" accept-charset="utf-8">
+		<form name="login" action="registerFinalize" method="POST" accept-charset="utf-8">
 			<ul>
 				<li>
-					<label for="usermail">Name</label>
-					<input type="email" name="usermail" placeholder="Company/Person" required>
+					<label for="name">Name</label>
+					<input type="string" name="name" placeholder="Company/Person" required>
 				</li>
 				<li>
-					<label for="password">SSN/EID</label>
-					<input type="password" name="password" placeholder="SSN/EID" required></li>
+					<label for="password">SSN</label>
+					<input type="password" name="ssn" placeholder="SSN" required></li>
 				<li>
-					<label for="password">Address</label>
-					<input type="password" name="password" placeholder="Address" required></li>
+					<label for="address">Address</label>
+					<input type="address" name="address" placeholder="Address" required></li>
 				<li>
-					<label for="password">Phone Number</label>
-					<input type="password" name="password" placeholder="xxx-xxx-xxxx" required></li>
+					<label for="number">Phone Number</label>
+					<input type="number" name="number" placeholder="xxx-xxx-xxxx" required></li>
 				<li>
-					<label for="password">Education Level</label>
+					<label for="password" name="edLevel">Education Level</label>
 					 <select>
-						  <option value="undergrad">Undergrad</option>
+						  <option value="undergrad" >Undergrad</option>
 						  <option value="graduate">Graduate</option>
 						  <option value="nodiploma">No Diploma</option>
 					</select>
 				</li>
 				<li>
-					<label for="password">Experience Level</label>
+					<label for="password" name="exLevel">Experience Level</label>
 					 <select>
 						  <option value="no experience">No Experience</option>
 						  <option value="novice">Novice</option>

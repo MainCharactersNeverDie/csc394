@@ -1,7 +1,6 @@
 package algorithm;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class filterAndQuery {
 	HashMap<String, HashMap<String, Integer>> Result;

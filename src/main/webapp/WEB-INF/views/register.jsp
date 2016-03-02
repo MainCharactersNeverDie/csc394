@@ -8,25 +8,25 @@
 <body>
 <h1 align="center"> Welcome to Jobscam.ru! </h1>
 
-<%@ include file="webParts/appBar.jsp" %>
+<%@ include file="webParts/anonBar.jsp" %>
 
 	<section class="loginform cf">
-		<form name="login" action="index_submit" method="get" accept-charset="utf-8">
+		<form name="login" action="register" method="POST" accept-charset="utf-8">
 			<ul>
 				<li> I am a...
-				<input type="radio">Person
-				<input type="radio">Company
+				<input type="radio" name="person">Person
+				<input type="radio" name="compony">Company
 				</li>
 				<br></br>
 				<li>
-					<label for="usermail">Email</label>
-					<input type="email" name="usermail" placeholder="yourname@email.com" required>
+					<label for="username">Email</label>
+					<input type="email" name="username" placeholder="yourname@email.com" required>
 				</li>
 				<li>
 					<label for="password">Password</label>
 					<input type="password" name="password" placeholder="password" required></li>
 				<li>
-				<input type="submit" value="Submit">
+				<input type="submit" value="submit">
 				</li>
 			</ul>
 		</form>

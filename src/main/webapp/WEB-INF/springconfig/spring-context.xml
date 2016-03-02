@@ -24,6 +24,8 @@
                cache-period="10000" />
 
 	<security:http auto-config="true">
+		<security:intercept-url pattern="/register" access="ROLE_ANONYMOUS" />
+		<security:intercept-url pattern="/registerFinalize" access="ROLE_ANONYMOUS" />
 		<security:intercept-url pattern="/" access="ROLE_ANONYMOUS,ROLE_USER" />
 		<security:intercept-url pattern="/css/**" access="ROLE_ANONYMOUS,ROLE_USER" />
 		<security:intercept-url pattern="/images/**" access="ROLE_ANONYMOUS,ROLE_USER" />
@@ -37,6 +39,7 @@
 		<security:authentication-provider user-service-ref="UserLoginService"/>
 	</security:authentication-manager>
 
+	<bean id="alg" class="main.java.testName.alg.Algorithm"></bean>
 	<bean id="applicantController" class="main.java.testName.ApplicantController"></bean>
 	<bean id="companyController" class="main.java.testName.CompanyController"></bean>
 	<bean id="UserLoginService" class="main.java.testName.userService.UserLoginService"></bean>

@@ -1,8 +1,7 @@
 package data;
-import java.util.*;
-import java.util.Map.Entry;
-import java.sql.*;
-import data.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 public class Connector{
     private static Connection conn = null;
     public static Connection getConnection(){

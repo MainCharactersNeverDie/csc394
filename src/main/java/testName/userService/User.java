@@ -16,7 +16,7 @@ public class User implements UserDetails{
 	private String password;
 	private String username;
 	
-	User(Group userGroupIn, String usernameIn, String passwordIn){
+	public User(Group userGroupIn, String usernameIn, String passwordIn){
 		userGroup=userGroupIn;
 		username=usernameIn;
 		password=passwordIn;

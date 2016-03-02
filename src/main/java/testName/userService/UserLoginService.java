@@ -4,6 +4,7 @@ import static main.java.testName.Group.Applicant;
 import static main.java.testName.Group.Company;
 
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 import main.java.testName.Group;
 
@@ -15,8 +16,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 public class UserLoginService implements UserDetailsService{
 
-	private HashMap<String,User> users = new HashMap<>();
-	{
+	private static volatile ConcurrentHashMap<String, User> users = new ConcurrentHashMap<>();
+	static {
 		addUser(Applicant,"app@app.app","apppass");
 		addUser(Company,"co@co.co","copass");
 	}
@@ -35,7 +36,7 @@ public class UserLoginService implements UserDetailsService{
 
 	}
 
-	public boolean addUser(Group userGroup, String username, String password){
+	public static boolean addUser(Group userGroup, String username, String password){
 		if(users.containsKey(username)){
 			return false;
 		}
@@ -50,5 +51,13 @@ public class UserLoginService implements UserDetailsService{
 		}
 	    String name = auth.getName();
 	    return users.get(name);
+	}
+	
+	public boolean nameFree(String username){
+		return !users.containsKey(username);
+	}
+	
+	public void finalizeUser(User user){
+		users.put(user.getUsername(),user);
 	}
 }
