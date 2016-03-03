@@ -2,6 +2,12 @@ html {
 	background: url('http://subtlepatterns.com/patterns/wood_pattern.png');
 	font-size: 10pt;
 }
+
+.header-image #title a {
+	background: url('webParts/jobscam.png') no-repeat;
+}
+
+
 label {
 	display: block;
 	color: #999;
