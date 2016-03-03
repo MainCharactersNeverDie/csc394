@@ -3,6 +3,23 @@ html {
 	font-size: 10pt;
 }
 
+.header-image #title-area,
+.header-image #title,
+.header-image #title a {
+	display: block;
+	float: left;
+	height: 90px;
+	overflow: hidden;
+	padding: 0;
+	text-indent: -9999px;
+	width: 350px;
+}
+
+.header-image #description {
+	display: block;
+	overflow: hidden;
+}
+
 .header-image #title a {
 	background: url('webParts/jobscam.png') no-repeat;
 }
@@ -27,6 +44,7 @@ label {
 :focus {
 	outline: 0;
 }
+
 .loginform {
 	width: 410px;
 	margin: 50px auto;
