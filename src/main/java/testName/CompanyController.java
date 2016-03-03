@@ -37,7 +37,13 @@ public class CompanyController {
 		if(user.getUserGroup()!=Group.Company){
 			return new ModelAndView("reditect:503");
 		}
-		return new ModelAndView("WEB-INF/views/coProfile.jsp");
+		
+		ModelAndView mav =new ModelAndView("WEB-INF/views/coProfile.jsp");
+		mav.addObject("userDetails", uls.getUserDetails(user));
+		
+		System.out.println(uls.getUserDetails(user));
+		mav.addObject("email",user.getUsername());
+		return mav;
 	}
 	
 	@RequestMapping(value="/postJob",method=RequestMethod.GET)

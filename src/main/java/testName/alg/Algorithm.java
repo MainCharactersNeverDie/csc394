@@ -1,6 +1,8 @@
 package main.java.testName.alg;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -15,7 +17,7 @@ import main.java.testName.userService.UserLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class Algorithm {
-	
+	private final int MAX_RESULTS=20;
 	private List<QuestionAnswerPair> cultureQuestions=new ArrayList<>();;
 	private List<QuestionAnswerPair> techQuestions=new ArrayList<>();;
 	private List<QuestionAnswerPair> allQuestions=new ArrayList<>();;
@@ -63,7 +65,13 @@ public class Algorithm {
 				result.add(new Result(u, j.getTitle(), Score(u,cultureQuestions), Score(u,techQuestions), Score(u, allQuestions),uls.getUserDetails(u).getName()));
 			}
 		}
-		return result;
+		Collections.sort(result, new Comparator<Result>(){
+
+			@Override
+			public int compare(Result r1, Result r2) {
+				return r2.getOveralScore().compareTo(r1.getOveralScore());
+			}});
+		return result.subList(0, Math.min(result.size(),MAX_RESULTS));
 	}
 	
 	public double Score(User u, List<QuestionAnswerPair> qs){

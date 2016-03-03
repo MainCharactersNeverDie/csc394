@@ -31,7 +31,10 @@ public class ApplicantController {
 		if(user.getUserGroup()!=Group.Applicant){
 			return new ModelAndView("reditect:503");
 		}
-		return new ModelAndView("WEB-INF/views/appProfile.jsp");
+		ModelAndView mav =new ModelAndView("WEB-INF/views/appProfile.jsp");
+		mav.addObject("userDetails", uls.getUserDetails(user));
+		mav.addObject("email",user.getUsername());
+		return mav;
 	}
 	
 	@RequestMapping(value="/question",method=RequestMethod.GET)
