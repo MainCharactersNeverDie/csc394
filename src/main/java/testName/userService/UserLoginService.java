@@ -23,6 +23,8 @@ public class UserLoginService implements UserDetailsService{
 	static {
 		finalizeUser(new User(Applicant,"app@app.app","apppass"), new UserDetails("app",555,"test",444));
 		finalizeUser(new User(Company,"co@co.co","copass"), new UserDetails("co",565,"test",432));
+		finalizeUser(new User(Applicant,"samejgink@gmail.com","pass"), new UserDetails("Jimmy King",123456789,"10756 Crestview Rd LaGrange, IL 60525",555555555));
+		
 		// Added Users
 		finalizeUser(new User(Applicant,"CatherineFloyd29577@gmail.com","password1"), new UserDetails("Catherine Floyd", 200427606, "835246 Rooz Way Uvumejuzu, DC 96911", 966070811));
 		finalizeUser(new User(Applicant,"IsabelGrant83919@gmail.com","password1"), new UserDetails("Isabel Grant", 497146081, "601288 Zaup Point Fuhfazid, MA 90113", 720307579));
