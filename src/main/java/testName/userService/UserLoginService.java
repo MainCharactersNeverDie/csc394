@@ -24,16 +24,16 @@ public class UserLoginService implements UserDetailsService{
 		finalizeUser(new User(Applicant,"app@app.app","apppass"), new UserDetails("app",555,"test",444));
 		finalizeUser(new User(Company,"co@co.co","copass"), new UserDetails("co",565,"test",432));
 		// Added Users
-		finalizeUser(new User(Applicant,"CatherineFloyd29577@gmail.com","password1"), new UserDetails("Catherine Floyd", 200427606, "835246 Rooz Way UvumejuzuDC 96911", "9663070811"));
-		finalizeUser(new User(Applicant,"IsabelGrant83919@gmail.com","password1"), new UserDetails("Isabel Grant", "497146081, "601288 Zaup Point FuhfazidMA 90113", "7203075579"));
-		finalizeUser(new User(Applicant,"FloydBenson58583@gmail.com","password1"), new UserDetails("Floyd Benson", "227129422, "693429 Guzho Mill CimcadohOR 71974", "6272790902"));
-		finalizeUser(new User(Applicant,"GabrielTurner06856@gmail.com","password1"), new UserDetails("Gabriel Turner", "991801871, "714833 Tiche Turnpike FahkinsidWV 48199", "7166989673"));
-		finalizeUser(new User(Applicant,"NelleMcGuire93252@gmail.com","password1"), new UserDetails("Nelle McGuire", "289907962, "261917 Siges Parkway FusekajMT 34301", "8053491018"));
-		finalizeUser(new User(Applicant,"WayneDaniels78028@gmail.com","password1"), new UserDetails("Wayne Daniels", "478958924, "762153 Hapku Glen HetivsesTN 07383", "6189611925"));
-		finalizeUser(new User(Applicant,"SallyCrawford74210@gmail.com","password1"), new UserDetails("Sally Crawford", "512373950, "294524 Ohli Mill DudogutNV 39774", "5498531424"));
-		finalizeUser(new User(Applicant,"GussieBall70982@gmail.com","password1"), new UserDetails("Gussie Ball", "481642864, "323561 Voki Mill AwehemoDE 04737", "6054166735"));
-		finalizeUser(new User(Applicant,"CeliaJones19517@gmail.com","password1"), new UserDetails("Celia Jones", "151245069, "944328 Ediri Turnpike EphiolTN 01686", "4229346264"));
-		finalizeUser(new User(Applicant,"KeithFarmer56960@gmail.com","password1"), new UserDetails("Keith Farmer", "348605926, "256204 Ofkid Drive PebocigOK 50184", "9999537391"));
+		finalizeUser(new User(Applicant,"CatherineFloyd29577@gmail.com","password1"), new UserDetails("Catherine Floyd", 200427606, "835246 Rooz Way UvumejuzuDC 96911", 9663070811));
+		finalizeUser(new User(Applicant,"IsabelGrant83919@gmail.com","password1"), new UserDetails("Isabel Grant", 497146081, "601288 Zaup Point FuhfazidMA 90113", 7203075579));
+		finalizeUser(new User(Applicant,"FloydBenson58583@gmail.com","password1"), new UserDetails("Floyd Benson", 227129422, "693429 Guzho Mill CimcadohOR 71974", 6272790902));
+		finalizeUser(new User(Applicant,"GabrielTurner06856@gmail.com","password1"), new UserDetails("Gabriel Turner", 991801871, "714833 Tiche Turnpike FahkinsidWV 48199", 7166989673));
+		finalizeUser(new User(Applicant,"NelleMcGuire93252@gmail.com","password1"), new UserDetails("Nelle McGuire", 289907962, "261917 Siges Parkway FusekajMT 34301", 8053491018));
+		finalizeUser(new User(Applicant,"WayneDaniels78028@gmail.com","password1"), new UserDetails("Wayne Daniels", 478958924, "762153 Hapku Glen HetivsesTN 07383", 6189611925));
+		finalizeUser(new User(Applicant,"SallyCrawford74210@gmail.com","password1"), new UserDetails("Sally Crawford", 512373950, "294524 Ohli Mill DudogutNV 39774", 5498531424));
+		finalizeUser(new User(Applicant,"GussieBall70982@gmail.com","password1"), new UserDetails("Gussie Ball", 481642864, "323561 Voki Mill AwehemoDE 04737", 6054166735));
+		finalizeUser(new User(Applicant,"CeliaJones19517@gmail.com","password1"), new UserDetails("Celia Jones", 151245069, "944328 Ediri Turnpike EphiolTN 01686", 4229346264));
+		finalizeUser(new User(Applicant,"KeithFarmer56960@gmail.com","password1"), new UserDetails("Keith Farmer", 348605926, "256204 Ofkid Drive PebocigOK 50184", 9999537391));
 		finalizeUser(new User(Applicant,"CatherineSalazar41682@gmail.com","password1"), new UserDetails("Catherine Salazar", 681393645, "600149 Zikut Boulevard MeegafLA 11082", 2600280552));
 		finalizeUser(new User(Applicant,"WinniePope02863@gmail.com","password1"), new UserDetails("Winnie Pope", 663769692, "565931 Nihguj Terrace VudtufiNM 24493", 5318714728));
 		finalizeUser(new User(Applicant,"DonaldRussell42320@gmail.com","password1"), new UserDetails("Donald Russell", 931834932, "180194 Webok Avenue KanlezdoSC 40367", 1641976528));
