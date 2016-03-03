@@ -23,9 +23,17 @@ public class Algorithm {
 	private List<QuestionAnswerPair> allQuestions=new ArrayList<>();;
 	
 	{
-		cultureQuestions.add(new QuestionAnswerPair(new RadialQuestion("question1","test1","test2","test3"),"1"));
-		cultureQuestions.add(new QuestionAnswerPair(new RadialQuestion("question2","test1","test2","test3"),"0"));
-		cultureQuestions.add(new QuestionAnswerPair(new RadialQuestion("question3","test1","test2","test3"),"1"));
+		cultureQuestions.add(new QuestionAnswerPair(new RadialQuestion("What is the ideal size of the company that you would want to work for?","A few dedicated people in a garage","A giant corporation with thousands of staff worldwide","An office full of people in one location"),"1"));
+		cultureQuestions.add(new QuestionAnswerPair(new RadialQuestion("What is the ideal size of the company that you would want to work for?","A few dedicated people in a garage","A giant corporation with thousands of staff worldwide","An office full of people in one location","No preference"),"1"));
+		cultureQuestions.add(new QuestionAnswerPair(new RadialQuestion("When you go to work, what would you prefer to wear?","Super Casual","Business Casual","Business Formal","No preference"),"0"));
+		cultureQuestions.add(new QuestionAnswerPair(new RadialQuestion("Whenever you are given a task, there are always resources available to you in the form of your co-workers. How would you utilize those resources?","Work on the task alone","Form a task group to tackle the problem","Use your co-workers on a need basis"),"2"));
+		cultureQuestions.add(new QuestionAnswerPair(new RadialQuestion("What are your ideal work hours?","Nine to five, like the song","Flexibility in when I work is important, as long as I get my 8 hours in","I work all the time, nights, weekends, doesn't matter"),"0"));
+		cultureQuestions.add(new QuestionAnswerPair(new RadialQuestion("Is the organization of a company important to you, and if so, how much?","I have no interest in heirarchy","Organization is the key to success","I'm just a cog in the wheel"),"2"));
+		cultureQuestions.add(new QuestionAnswerPair(new RadialQuestion("Are you a people person?","Yes","No","Stop asking me questions!"),"0"));
+		cultureQuestions.add(new QuestionAnswerPair(new RadialQuestion("Would you be comfortable reaching out to a client to help them solve their problems, even if your position doesn't necessarily require you to do so?","Yes, I have no problem calling a client","I would prefer to give the fix instructions to Customer Support so they can make contact, but I would if it was necessary","I would refuse to make that call, it wasn't in my original deal"),"2"));
+		cultureQuestions.add(new QuestionAnswerPair(new RadialQuestion("How would you fare in an office cubicle farm?","I would wither and die","I don't have a preference","I like cubicles, it’s a place to keep my stapler"),"0"));
+		cultureQuestions.add(new QuestionAnswerPair(new RadialQuestion("When do you feel the most productive?","First thing in the morning, when I have direction","Afternoons after all the meetings are done","I find I'm most productive at night, from home."),"2"));
+
 	}
 	//Radial Question answers are strings containing the 0-based index of the right answer.
 	{
