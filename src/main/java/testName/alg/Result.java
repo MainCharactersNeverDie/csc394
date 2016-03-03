@@ -27,18 +27,20 @@ public class Result {
 		return jobtitle;
 	}
 	
-	public double getTechScore(){
-		return techScore;
+	public String getTechScore(){
+		return clip(techScore+"");
 	}
 	
-	public double getCultureScore(){
-		return cultureScore;
+	public String getCultureScore(){
+		return clip(cultureScore+"");
 	}
 	
-	public double getOveralScore(){
-		return overalScore;
+	public String getOveralScore(){
+		return clip(overalScore+"");
 	}
-	
+	public String clip(String s){
+		return s.substring(0,Math.min(s.length(), 5));
+	}
 	public String getName(){
 		return name;
 	}

@@ -21,15 +21,15 @@ public class Algorithm {
 	private List<QuestionAnswerPair> allQuestions=new ArrayList<>();;
 	
 	{
-		cultureQuestions.add(new QuestionAnswerPair(new RadialQuestion("question1","test1","test2","test3"),"test2"));
-		cultureQuestions.add(new QuestionAnswerPair(new RadialQuestion("question2","test1","test2","test3"),"test1"));
-		cultureQuestions.add(new QuestionAnswerPair(new RadialQuestion("question3","test1","test2","test3"),"test3"));
+		cultureQuestions.add(new QuestionAnswerPair(new RadialQuestion("question1","test1","test2","test3"),"1"));
+		cultureQuestions.add(new QuestionAnswerPair(new RadialQuestion("question2","test1","test2","test3"),"0"));
+		cultureQuestions.add(new QuestionAnswerPair(new RadialQuestion("question3","test1","test2","test3"),"1"));
 	}
-	
+	//Radial Question answers are strings containing the 0-based index of the right answer.
 	{
-		techQuestions.add(new QuestionAnswerPair(new RadialQuestion("tquestion1a","test1","test2","test3"),"test2"));
-		techQuestions.add(new QuestionAnswerPair(new RadialQuestion("tquestion2a","test1","test2","test3"),"test1"));
-		techQuestions.add(new QuestionAnswerPair(new RadialQuestion("tquestion","test1","test2","test3"),"test3"));
+		techQuestions.add(new QuestionAnswerPair(new RadialQuestion("tquestion1a","test1","test2","test3"),"0"));
+		techQuestions.add(new QuestionAnswerPair(new RadialQuestion("tquestion2a","test1","test2","test3"),"1"));
+		techQuestions.add(new QuestionAnswerPair(new RadialQuestion("tquestion","test1","test2","test3"),"2"));
 	}	
 	
 	{
@@ -72,12 +72,13 @@ public class Algorithm {
 		
 		for(QuestionAnswerPair q:qs){
 			questions++;
+			System.out.println(qdoa.getAnswer(u, q.getQuestion()));
 			if(qdoa.getAnswer(u, q.getQuestion()).equals(q.getAnswer())){
 				answers++;
 			}
 		}
 		
-		return (answers*1.0)/questions;
+		return (answers*100.0)/questions;
 	}
 	
 	
