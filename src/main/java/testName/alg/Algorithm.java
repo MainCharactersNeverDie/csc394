@@ -37,9 +37,14 @@ public class Algorithm {
 	}
 	//Radial Question answers are strings containing the 0-based index of the right answer.
 	{
-		techQuestions.add(new QuestionAnswerPair(new RadialQuestion("tquestion1a","test1","test2","test3"),"0"));
-		techQuestions.add(new QuestionAnswerPair(new RadialQuestion("tquestion2a","test1","test2","test3"),"1"));
-		techQuestions.add(new QuestionAnswerPair(new RadialQuestion("tquestion","test1","test2","test3"),"2"));
+		techQuestions.add(new QuestionAnswerPair(new RadialQuestion("What programming language are you most comfortable with?,"Java","Python","XCode"),"0"));
+		techQuestions.add(new QuestionAnswerPair(new RadialQuestion("How many mobile apps have you published for either iOS or Android?,"0 - 10","10-100","100+"),"2"));
+		techQuestions.add(new QuestionAnswerPair(new RadialQuestion("What is the most efficient search algorithm to use when your data is unsorted?,"Quick Sort","Insertion Sort","Bubble Sort"),"0"));
+		techQuestions.add(new QuestionAnswerPair(new RadialQuestion("Could you code a website that matches potential employees to companies and their job postings?,"Yes","No","Deja Vu"),"2"));
+		techQuestions.add(new QuestionAnswerPair(new RadialQuestion("From which school did you get your Computer Science degree?,"DePaul","DeVry","Other"),"0"));
+		techQuestions.add(new QuestionAnswerPair(new RadialQuestion("How many licks does it take to get to the Tootsie Roll center of a Tootsie Pop?,"3","Between 252 and 364","What does this have to do with anything?"),"1"));
+		techQuestions.add(new QuestionAnswerPair(new RadialQuestion("What is your preferred operating system?,"Mac","Linux","Windows"),"1"));
+		techQuestions.add(new QuestionAnswerPair(new RadialQuestion("If you were asked to explain, in detail, how null pointers work in Java, could you?,"Yes","No","Whats a null pointer?"),"2"));
 	}	
 	
 	{
