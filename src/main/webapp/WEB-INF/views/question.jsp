@@ -13,7 +13,7 @@
 
 <h3 align="center"> Get To Know Me! </h3>
 	<section class="loginform cf">
-		<form name="question" action="question" method="get" accept-charset="utf-8">
+		<form name="question" action="question" method="post" accept-charset="utf-8">
 			<%  int i=0;
 				for(String s:(List<String>)request.getAttribute("answerList")) { i++; if(i==1){%>
 					<%=s%>

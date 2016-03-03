@@ -21,14 +21,14 @@ public class Algorithm {
 	private List<QuestionAnswerPair> allQuestions=new ArrayList<>();;
 	
 	{
-		cultureQuestions.add(new QuestionAnswerPair(new RadialQuestion("question","test1","test2","test3"),"test2"));
-		cultureQuestions.add(new QuestionAnswerPair(new RadialQuestion("question","test1","test2","test3"),"test1"));
-		cultureQuestions.add(new QuestionAnswerPair(new RadialQuestion("question","test1","test2","test3"),"test3"));
+		cultureQuestions.add(new QuestionAnswerPair(new RadialQuestion("question1","test1","test2","test3"),"test2"));
+		cultureQuestions.add(new QuestionAnswerPair(new RadialQuestion("question2","test1","test2","test3"),"test1"));
+		cultureQuestions.add(new QuestionAnswerPair(new RadialQuestion("question3","test1","test2","test3"),"test3"));
 	}
 	
 	{
-		techQuestions.add(new QuestionAnswerPair(new RadialQuestion("tquestion","test1","test2","test3"),"test2"));
-		techQuestions.add(new QuestionAnswerPair(new RadialQuestion("tquestion","test1","test2","test3"),"test1"));
+		techQuestions.add(new QuestionAnswerPair(new RadialQuestion("tquestion1a","test1","test2","test3"),"test2"));
+		techQuestions.add(new QuestionAnswerPair(new RadialQuestion("tquestion2a","test1","test2","test3"),"test1"));
 		techQuestions.add(new QuestionAnswerPair(new RadialQuestion("tquestion","test1","test2","test3"),"test3"));
 	}	
 	
@@ -43,11 +43,15 @@ public class Algorithm {
 	@Autowired
 	private QuestionDAO qdoa;
 	
+	private static volatile boolean done=false;
 	@PostConstruct
-	public void transferQuestions(){
-		System.out.println(qdoa);
-		for(QuestionAnswerPair q:allQuestions){
-			//qdoa.addQuestion(q.getQuestion());
+	public synchronized void transferQuestions() {
+		if (!done) {
+			done = true;
+			System.out.println(qdoa);
+			for (QuestionAnswerPair q : allQuestions) {
+				qdoa.addQuestion(q.getQuestion());
+			}
 		}
 	}
 	

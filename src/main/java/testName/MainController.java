@@ -24,6 +24,7 @@ public class MainController {
 	public ModelAndView signIn(Model model, String userName, String password){
 		User user= userLoginService.getLogedInUser();
 		if(user==null){
+			System.out.println("User was null in main controller root");
 			return new ModelAndView("WEB-INF/views/root.jsp");
 		}
 		if (user.getUserGroup() == Group.Applicant) {

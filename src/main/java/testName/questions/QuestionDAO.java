@@ -10,23 +10,21 @@ public class QuestionDAO {
 	private static volatile ConcurrentHashMap<User,Long> userIndex = new ConcurrentHashMap<>();
 	private static volatile ConcurrentHashMap<UserQuestionPair,String> answers= new ConcurrentHashMap<>();
 	
-	static {
-		questions.put(0L,new RadialQuestion("question","test1","test2","test3"));
-	}
-	
-	private static volatile long numOfQs=1L;
+	private static volatile long numOfQs=0L;
 	
 	public void addQuestion(Question q){
 		questions.put(numOfQs++, q);
 	}
 	public Question getUserQuesition(User u){
-		if(!userIndex.contains(u)){
+		if(!userIndex.containsKey(u)){
 			userIndex.put(u,0L);
 		}
+		System.out.println(userIndex.get(u));
 		return questions.get(userIndex.get(u));
 	}
 	
 	public void answerQuestion(User u, Question q, String answer){
+		System.out.println("gothere");
 			userIndex.put(u,userIndex.get(u)+1);
 			answers.put(new UserQuestionPair(u,q), answer);
 	}

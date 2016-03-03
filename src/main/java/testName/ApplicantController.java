@@ -41,6 +41,9 @@ public class ApplicantController {
 			return new ModelAndView("reditect:503");
 		}
 		Question q=qdoa.getUserQuesition(user);
+		if(q==null){
+			return new ModelAndView("WEB-INF/views/outOfQuestions.jsp");
+		}
 		ModelAndView mav= new ModelAndView(q.getQuestionStyle());
 		mav.addObject("answerList",q.getAnswerList());
 		return mav;
