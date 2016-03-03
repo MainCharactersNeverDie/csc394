@@ -21,21 +21,28 @@ public class RegisterController {
 	private UserLoginService uls;
 	
 	@RequestMapping(value="/register", method=RequestMethod.POST)
-	public ModelAndView profile(String person, String company, String username, String password) throws MessagingException{
+	public ModelAndView profile(String test, String username, String password) throws MessagingException{
 		if(!uls.nameFree(username)){
 			return new ModelAndView("redirect:/register?error=username_taken");
 		}
 		
 		System.out.println("username: "+username+ "password: "+ password);
-		
-		User user = new User((person.equals("on")?Group.Applicant:Group.Company),username,password);
+		if(test==null){
+			return new ModelAndView("redirect:/?error=noTypeSelected");
+		}
+		User user =null;
+		if(test.equals("compony")){
+			user=new User(Group.Company,username,password);
+		}else{
+			user = new User(Group.Applicant,username,password);
+		}
 		
 		System.out.println("created:  username: "+user.getUsername()+ " password: "+ user.getPassword());
 		
 		ServletRequestAttributes atter = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
 		atter.setAttribute("User", user, atter.SCOPE_SESSION);
 		
-		if(person.equals("on")){
+		if(!test.equals("compony")){
 			return new ModelAndView("WEB-INF/views/appSignup.jsp");
 		}
 		return new ModelAndView("WEB-INF/views/coSignup.jsp");

@@ -14,8 +14,8 @@
 		<form name="login" action="register" method="POST" accept-charset="utf-8">
 			<ul>
 				<li> I am a...
-				<input type="radio" name="person">Person
-				<input type="radio" name="compony">Company
+				<input type="radio" name="test" value="person">Person
+				<input type="radio" name="test" value="compony">Company
 				</li>
 				<br></br>
 				<li>
