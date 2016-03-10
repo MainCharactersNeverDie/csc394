@@ -8,8 +8,41 @@
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
 <center><img src="images\jobscam.png" ></center>
+
+
+<aside style="float:left">
+<div style="text-align:center">
+<img src="images/boulder.png" height="42" width="42">
+<img src="images/cascade.png" height="42" width="42">
+<img src="images/thunder.png" height="42" width="42">
+<img src="images/rainbow.png" height="42" width="42">
+<img src="images/soul.png" height="42" width="42">
+<img src="images/marsh.png" height="42" width="42">
+<img src="images/volcano.png" height="42" width="42">
+<img src="images/earth.png" height="42" width="42">
+<br />
+<img src="images/zephyr.png" height="42" width="42">
+<img src="images/hive.png" height="42" width="42">
+<img src="images/plain.png" height="42" width="42">
+<img src="images/fog.png" height="42" width="42">
+<img src="images/storm.png" height="42" width="42">
+<img src="images/mineral.png" height="42" width="42">
+<img src="images/glacier.png" height="42" width="42">
+<img src="images/rising.png" height="42" width="42">
+<br />
+<img src="images/coal.png" height="42" width="42">
+<img src="images/forest.png" height="42" width="42">
+<img src="images/cobble.png" height="42" width="42">
+<img src="images/fen.png" height="42" width="42">
+<img src="images/relic.png" height="42" width="42">
+<img src="images/mine.png" height="42" width="42">
+<img src="images/ice.png" height="42" width="42">
+<img src="images/beacon.png" height="42" width="42">
+
+
+<div>
+</aside>
 
 <%@ include file="webParts/appBar.jsp" %>
 
