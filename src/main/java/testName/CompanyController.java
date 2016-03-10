@@ -78,4 +78,15 @@ public class CompanyController {
 		mav.addObject("res", alg.getMatches(jdao.getJobsList(user)));
 		return mav;
 	}
+
+    @RequestMapping(value="/createQuestions",method=RequestMethod.GET)
+    public ModelAndView createQuestions(){
+        User user=uls.getLogedInUser();
+        if(user.getUserGroup()!=Group.Company){
+            return new ModelAndView("reditect:503");
+        }
+
+        ModelAndView mav= new ModelAndView("WEB-INF/views/cquestions.jsp");
+        return mav;
+    }
 }

@@ -41,6 +41,7 @@ label {
 }
 .loginform input:not([type=submit]) {
 	padding: 5px;
+    width:100%;
 	margin-right: 10px;
 	border: 1px solid rgba(0, 0, 0, 0.3);
 	border-radius: 3px;
@@ -60,9 +61,17 @@ label {
 	color: #fff;
 	padding: 5px 15px;
 	margin-right: 0;
-	margin-top: 15px;
+	margin-top: 5px;
 	border-radius: 3px;
 	text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3);
+}
+.type-div{
+    display:inline-block;
+    height:100%;
+}
+.submit-div{
+    display: inline-block;
+    float: right;
 }
 
 .hamsterTable { width:400px;background-color:#fae1e1;font-size:12px; }
