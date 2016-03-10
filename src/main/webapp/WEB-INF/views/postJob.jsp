@@ -48,6 +48,10 @@
 					<input type="submit" value="Post Job">
 				</li>
 			</ul>
+			
+    			<div style="text-align:center">
+    				<input type="submit" value="View All Created Jobs">
+    			</div>
 		</form>
 	</section>
 </body>
