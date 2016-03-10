@@ -4,6 +4,10 @@
 	<title>Registration</title>
 	<link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src='https://code.jquery.com/jquery-2.2.1.min.js'></script>
+    <script src="js/jquery.growl.js" type="text/javascript"></script>
+    <link href="css/jquery.growl.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/signIn.js"></script>
 </head>
 <body>
 <center><img src="images\jobscam.png" ></center>
