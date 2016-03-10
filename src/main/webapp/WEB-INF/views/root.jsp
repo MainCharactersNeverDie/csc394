@@ -4,6 +4,10 @@
 		<title>Login/Sign Up Page</title>
 		<link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/style.css">
+        <script type="text/javascript" src='https://code.jquery.com/jquery-2.2.1.min.js'></script>
+        <script src="js/jquery.growl.js" type="text/javascript"></script>
+        <link href="css/jquery.growl.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="js/signIn.js"></script>
 	</head>
 	<body>
 		<center><img src="images\jobscam.png" ></center>
@@ -24,7 +28,7 @@
 						<label for="password">Password</label>
 						<input type="password" name="j_password" placeholder="password" required></li>
 					<li>
-						<input type="submit" value="submit">
+						<input id='submit' type="submit" value="submit">
 					</li><br></br>
 				</ul>
 			</form>
