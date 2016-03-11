@@ -8,7 +8,6 @@
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<center><img src="images\jobscam.png" ></center>
 
 <%@ include file="webParts/appBar.jsp" %>
 
