@@ -101,5 +101,16 @@ public class Algorithm {
 		return (answers*100.0)/questions;
 	}
 	
+	public void addTechQuestion(QuestionAnswerPair qap){
+		techQuestions.add(qap);
+		allQuestions.add(qap);
+		qdoa.addQuestion(qap.getQuestion());
+	}
+	
+	public void addCulQuestion(QuestionAnswerPair qap){
+		cultureQuestions.add(qap);
+		allQuestions.add(qap);
+		qdoa.addQuestion(qap.getQuestion());
+	}
 	
 }
