@@ -2,9 +2,6 @@ html {
 	background: url('../images/wood_pattern.png') !important;
 	font-size: 10pt;
 }
-body{
-	background: url('../images/wood_pattern.png') !important;
-}
 label {
 	display: block;
 	color: #999;
