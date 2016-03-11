@@ -5,4 +5,5 @@ import java.util.List;
 public interface Question {
 	String getQuestionStyle();
 	List<String> getAnswerList();
+	boolean isTechQuestion();
 }

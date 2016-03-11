@@ -19,6 +19,10 @@ public class User implements UserDetails{
 	private String password;
 	private String username;
 	
+	private int cultureScore;
+	private int techScore;
+	private int totalScore;
+	
 	public User(Group userGroupIn, String usernameIn, String passwordIn){
 		userGroup=userGroupIn;
 		username=usernameIn;
@@ -110,5 +114,26 @@ public class User implements UserDetails{
 	public void giveBadge(String badge){
 		badges.add(badge);
 	}
+
+	public int getCultureScore() {
+		return 50;//cultureScore;
+	}
+
+	public int getTechScore() {
+		return 25;//techScore;
+	}
+
+	public int getTotalScore() {
+		return 104;//totalScore;
+	}
+	
+	public void answeredTechQuestion(boolean right){
+		//TODO	
+	}
+	
+	public void answeredCulQuestion(boolean right){
+		//TODO
+	}
+
 	
 }

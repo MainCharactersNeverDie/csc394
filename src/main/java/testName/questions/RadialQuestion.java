@@ -6,10 +6,12 @@ import java.util.List;
 
 public class RadialQuestion implements Question{
 	private List<String> answers;
+	private boolean tech;
 	
-	public RadialQuestion(String question, String... answersIn){
+	public RadialQuestion(boolean techIn, String question, String... answersIn){
 		answers=new ArrayList<>(Arrays.asList(answersIn));
 		answers.add(0,question);
+		tech=techIn;
 	}
 	
 	@Override
@@ -45,6 +47,11 @@ public class RadialQuestion implements Question{
 		} else if (!answers.equals(other.answers))
 			return false;
 		return true;
+	}
+
+	@Override
+	public boolean isTechQuestion() {
+		return tech;
 	}
 	
 	

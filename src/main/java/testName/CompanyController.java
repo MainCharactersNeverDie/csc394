@@ -103,22 +103,17 @@ public class CompanyController {
         
         Question q=null;
         if(a2==null){
-        	q= new RadialQuestion(question, a1);
+        	q= new RadialQuestion(type.equals("tech"),question, a1);
         }else if (a3==null){
-        	q= new RadialQuestion(question, a1,a2);
+        	q= new RadialQuestion(type.equals("tech"),question, a1,a2);
         }else if (a4== null){
-        	q= new RadialQuestion(question, a1,a2,a3);
+        	q= new RadialQuestion(type.equals("tech"),question, a1,a2,a3);
         }else{
-        	q= new RadialQuestion(question, a1,a2,a3,a4);
+        	q= new RadialQuestion(type.equals("tech"),question, a1,a2,a3,a4);
         }
         
-        QuestionAnswerPair aqp= new QuestionAnswerPair(q, a1);
-        
-        if(type.equals("tech")){
-        	alg.addTechQuestion(aqp);
-        }else{
-        	alg.addCulQuestion(aqp);
-        }
+        alg.addQuestion(new QuestionAnswerPair(q, a1));
+
         
         ModelAndView mav= new ModelAndView("WEB-INF/views/cquestions.jsp");
         return mav;

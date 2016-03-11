@@ -1,6 +1,6 @@
 package main.java.testName;
 
-import main.java.testName.questions.Question;
+import main.java.testName.jobs.QuestionAnswerPair;
 import main.java.testName.questions.QuestionDAO;
 import main.java.testName.userService.User;
 import main.java.testName.userService.UserLoginService;
@@ -44,12 +44,12 @@ public class ApplicantController {
 		if(user.getUserGroup()!=Group.Applicant){
 			return new ModelAndView("reditect:503");
 		}
-		Question q=qdoa.getUserQuesition(user);
+		QuestionAnswerPair q=qdoa.getUserQuesition(user);
 		if(q==null){
 			return new ModelAndView("WEB-INF/views/outOfQuestions.jsp");
 		}
-		ModelAndView mav= new ModelAndView(q.getQuestionStyle());
-		mav.addObject("answerList",q.getAnswerList());
+		ModelAndView mav= new ModelAndView(q.getQuestion().getQuestionStyle());
+		mav.addObject("answerList",q.getQuestion().getAnswerList());
 		return mav;
 	}
 	
@@ -60,8 +60,7 @@ public class ApplicantController {
 			return new ModelAndView("reditect:503");
 		}
 		
-		Question q=qdoa.getUserQuesition(user);
-		qdoa.answerQuestion(user,q,answer);
+		qdoa.answerQuestion(user,qdoa.getUserQuesition(user),answer);
 		return question();
 	}
 }
