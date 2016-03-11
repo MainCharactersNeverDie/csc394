@@ -34,6 +34,7 @@ public class ApplicantController {
 		ModelAndView mav =new ModelAndView("WEB-INF/views/appProfile.jsp");
 		mav.addObject("userDetails", uls.getUserDetails(user));
 		mav.addObject("email",user.getUsername());
+		mav.addObject("badges",user.getBadges());
 		return mav;
 	}
 	

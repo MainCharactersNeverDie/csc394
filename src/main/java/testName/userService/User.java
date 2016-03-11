@@ -2,16 +2,18 @@ package main.java.testName.userService;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 
 import main.java.testName.Group;
-import main.java.testName.jobs.Job;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 public class User implements UserDetails{
 	private static final long serialVersionUID = 1L;
+	
+	private List<String> badges = new LinkedList<String>();
 	
 	private Group userGroup;
 	private String password;
@@ -99,6 +101,14 @@ public class User implements UserDetails{
 		} else if (!username.equals(other.username))
 			return false;
 		return true;
+	}
+
+	public List<String> getBadges() {
+		return badges;
+	}
+	
+	public void giveBadge(String badge){
+		badges.add(badge);
 	}
 	
 }
