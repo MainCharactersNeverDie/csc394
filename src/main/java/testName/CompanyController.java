@@ -3,6 +3,9 @@ package main.java.testName;
 import main.java.testName.alg.Algorithm;
 import main.java.testName.jobs.Job;
 import main.java.testName.jobs.JobDAO;
+import main.java.testName.jobs.QuestionAnswerPair;
+import main.java.testName.questions.Question;
+import main.java.testName.questions.RadialQuestion;
 import main.java.testName.userService.User;
 import main.java.testName.userService.UserLoginService;
 
@@ -23,6 +26,7 @@ public class CompanyController {
 	
 	@Autowired
 	private Algorithm alg;
+	
 	
 	public ModelAndView signIn(){
 		User user=uls.getLogedInUser();
@@ -86,6 +90,36 @@ public class CompanyController {
             return new ModelAndView("reditect:503");
         }
 
+        ModelAndView mav= new ModelAndView("WEB-INF/views/cquestions.jsp");
+        return mav;
+    }
+    
+    @RequestMapping(value="/createQuestions",method=RequestMethod.POST)
+    public ModelAndView createQuestion(String question, String a1, String a2, String a3, String a4, String type){
+        User user=uls.getLogedInUser();
+        if(user.getUserGroup()!=Group.Company){
+            return new ModelAndView("reditect:503");
+        }
+        
+        Question q=null;
+        if(a2==null){
+        	q= new RadialQuestion(question, a1);
+        }else if (a3==null){
+        	q= new RadialQuestion(question, a1,a2);
+        }else if (a4== null){
+        	q= new RadialQuestion(question, a1,a2,a3);
+        }else{
+        	q= new RadialQuestion(question, a1,a2,a3,a4);
+        }
+        
+        QuestionAnswerPair aqp= new QuestionAnswerPair(q, a1);
+        
+        if(type.equals("tech")){
+        	alg.addTechQuestion(aqp);
+        }else{
+        	alg.addCulQuestion(aqp);
+        }
+        
         ModelAndView mav= new ModelAndView("WEB-INF/views/cquestions.jsp");
         return mav;
     }
