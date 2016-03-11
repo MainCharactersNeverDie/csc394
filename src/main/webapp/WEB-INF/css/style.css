@@ -1,6 +1,9 @@
 html {
-	background: url('../images/wood_pattern.png');
+	background: url('../images/wood_pattern.png') !important;
 	font-size: 10pt;
+}
+body{
+	background: url('../images/wood_pattern.png') !important;
 }
 label {
 	display: block;
@@ -8,7 +11,7 @@ label {
 }
 .cf:before,
 .cf:after {
-    content: ""; 
+    content: "";
     display: table;
 }
 
@@ -27,7 +30,7 @@ label {
 	padding: 25px;
 	background-color: rgba(250,250,250,0.5);
 	border-radius: 5px;
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2), 
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2),
     			inset 0px 1px 0px 0px rgba(250, 250, 250, 0.5);
     border: 1px solid rgba(0, 0, 0, 0.3);
 }
@@ -45,7 +48,7 @@ label {
 	margin-right: 10px;
 	border: 1px solid rgba(0, 0, 0, 0.3);
 	border-radius: 3px;
-	box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.1), 
+	box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.1),
 				0px 1px 0px 0px rgba(250, 250, 250, 0.5) ;
 }
 .loginform input[type=submit] {
@@ -61,7 +64,7 @@ label {
 	color: #fff;
 	padding: 5px 15px;
 	margin-right: 0;
-	margin-top: 5px;
+	margin-top: 15px;
 	border-radius: 3px;
 	text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3);
 }
@@ -72,6 +75,11 @@ label {
 .submit-div{
     display: inline-block;
     float: right;
+}
+.badge-div{
+	padding: 0 !important;
+	padding-right: 0 !important;
+	padding-left: 0 !important;
 }
 
 .hamsterTable { width:400px;background-color:#fae1e1;font-size:12px; }
