@@ -1,5 +1,8 @@
 package main.java.testName;
 
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+
 import main.java.testName.alg.Algorithm;
 import main.java.testName.jobs.Job;
 import main.java.testName.jobs.JobDAO;
@@ -17,6 +20,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class CompanyController {
+	
+	private static volatile ConcurrentHashMap<User,Job> curretJobs = new ConcurrentHashMap<>();
 	
 	@Autowired 
 	private JobDAO jdao;
@@ -84,13 +89,14 @@ public class CompanyController {
 	}
 
     @RequestMapping(value="/createQuestions",method=RequestMethod.GET)
-    public ModelAndView createQuestions(){
+    public ModelAndView createQuestions(int jobNum){
         User user=uls.getLogedInUser();
         if(user.getUserGroup()!=Group.Company){
             return new ModelAndView("reditect:503");
         }
-
+        curretJobs.put(user,jdao.getJobsList(user).get(jobNum));
         ModelAndView mav= new ModelAndView("WEB-INF/views/cquestions.jsp");
+        System.out.println(curretJobs.get(user).getTitle());
         return mav;
     }
     
@@ -100,22 +106,34 @@ public class CompanyController {
         if(user.getUserGroup()!=Group.Company){
             return new ModelAndView("reditect:503");
         }
-        
+        Job j= curretJobs.get(user);
         Question q=null;
         if(a2==null){
-        	q= new RadialQuestion(type.equals("tech"),question, a1);
+        	q= new RadialQuestion(j,type.equals("tech"),question, a1);
         }else if (a3==null){
-        	q= new RadialQuestion(type.equals("tech"),question, a1,a2);
+        	q= new RadialQuestion(j,type.equals("tech"),question, a1,a2);
         }else if (a4== null){
-        	q= new RadialQuestion(type.equals("tech"),question, a1,a2,a3);
+        	q= new RadialQuestion(j,type.equals("tech"),question, a1,a2,a3);
         }else{
-        	q= new RadialQuestion(type.equals("tech"),question, a1,a2,a3,a4);
+        	q= new RadialQuestion(j,type.equals("tech"),question, a1,a2,a3,a4);
         }
         
         alg.addQuestion(new QuestionAnswerPair(q, a1));
 
         
         ModelAndView mav= new ModelAndView("WEB-INF/views/cquestions.jsp");
+        return mav;
+    }
+    
+    @RequestMapping(value="/jobsList",method=RequestMethod.GET)
+    public ModelAndView listJobs(){
+        User user=uls.getLogedInUser();
+        if(user.getUserGroup()!=Group.Company){
+            return new ModelAndView("reditect:503");
+        }
+        
+        ModelAndView mav= new ModelAndView("WEB-INF/views/jobsList.jsp");
+        mav.addObject("jobs",jdao.getJobsList(user));
         return mav;
     }
 }

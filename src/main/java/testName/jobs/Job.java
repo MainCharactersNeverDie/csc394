@@ -1,6 +1,8 @@
 package main.java.testName.jobs;
 
 public class Job {
+	
+	private static Job nullJob= new Job("nullJob", "", "", "", "","");
 	private String title;
 	private String discription;
 	private String location;
@@ -21,5 +23,12 @@ public class Job {
 	public String getTitle() {
 		return title;
 	}
+	
+	public String getDiscription(){
+		return discription;
+	}
 
+	public static Job getNullJob(){
+		return nullJob;
+	}
 }

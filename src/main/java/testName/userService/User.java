@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import main.java.testName.Group;
+import main.java.testName.jobs.Job;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -116,23 +117,23 @@ public class User implements UserDetails{
 	}
 
 	public int getCultureScore() {
-		return 50;//cultureScore;
+		return cultureScore;
 	}
 
 	public int getTechScore() {
-		return 25;//techScore;
+		return techScore;
 	}
 
 	public int getTotalScore() {
-		return 104;//totalScore;
+		return totalScore;
 	}
 	
-	public void answeredTechQuestion(boolean right){
-		//TODO	
+	public void answeredTechQuestion(Job j, boolean right){
+		System.out.println("answerd Tech Question for "+j.getTitle());
 	}
 	
-	public void answeredCulQuestion(boolean right){
-		//TODO
+	public void answeredCulQuestion(Job j, boolean right){
+		System.out.println("answerd Cul Question for "+j.getTitle());
 	}
 
 	

@@ -4,14 +4,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import main.java.testName.jobs.Job;
+
 public class RadialQuestion implements Question{
 	private List<String> answers;
 	private boolean tech;
+	private Job j;
 	
-	public RadialQuestion(boolean techIn, String question, String... answersIn){
+	public RadialQuestion(Job jIn, boolean techIn, String question, String... answersIn){
 		answers=new ArrayList<>(Arrays.asList(answersIn));
 		answers.add(0,question);
 		tech=techIn;
+		j=jIn;
 	}
 	
 	@Override
@@ -54,6 +58,10 @@ public class RadialQuestion implements Question{
 		return tech;
 	}
 	
+	@Override
+	public Job getJob(){
+		return j;
+	}
 	
 
 }

@@ -29,9 +29,9 @@ public class QuestionDAO {
 		answers.put(new UserQuestionPair(u,q.getQuestion()), answer);
 		
 		if(q.getQuestion().isTechQuestion()){
-			u.answeredTechQuestion(answer.equals(q.getAnswer()));
+			u.answeredTechQuestion(q.getQuestion().getJob(),answer.equals(q.getAnswer()));
 		}else{
-			u.answeredCulQuestion(answer.equals(q.getAnswer()));
+			u.answeredCulQuestion(q.getQuestion().getJob(),answer.equals(q.getAnswer()));
 		}
 	}
 	
