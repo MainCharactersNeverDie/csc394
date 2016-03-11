@@ -1,3 +1,6 @@
+<%@ include file="commonHead.jsp" %>
+
+
 <h4 align="center">
 	<a href="profile" class="button-link">User Profile</a>
 	<a href="question" class="button-link">Get To Know Me!</a>

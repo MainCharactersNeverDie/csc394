@@ -10,6 +10,7 @@
 <body>
 <center><img src="images\jobscam.png" ></center>
 
+<%@ include file="webParts/appBar.jsp" %>
 
 <aside style="float:left">
 <div style="text-align:center">
@@ -44,7 +45,7 @@
 <div>
 </aside>
 
-<%@ include file="webParts/appBar.jsp" %>
+
 
 
 	<section class="loginform cf">

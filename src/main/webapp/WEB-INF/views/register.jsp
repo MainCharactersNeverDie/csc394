@@ -10,7 +10,6 @@
     <script type="text/javascript" src="js/signIn.js"></script>
 </head>
 <body>
-<center><img src="images\jobscam.png" ></center>
 
 <%@ include file="webParts/anonBar.jsp" %>
 

@@ -6,8 +6,8 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        <h1 align="center"> Welcome to Jobscam.ru! </h1>
 
+		<%@ include file="webParts/coBar.jsp" %>
 
         <h3 align="center"> Submit a Question</h3>
 

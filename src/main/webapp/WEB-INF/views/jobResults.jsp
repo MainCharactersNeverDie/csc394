@@ -11,7 +11,6 @@
 </head>
 <body>
 
-<center><img src="images\jobscam.png" ></center>
 <%@ include file="webParts/coBar.jsp" %>
 
 
