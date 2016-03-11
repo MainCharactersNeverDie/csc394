@@ -10,26 +10,24 @@
 <%@ include file="webParts/appBar.jsp" %>
 
 	<section class="loginform cf">
-		<form name="login" action="registerFinalize" method="POST" accept-charset="utf-8">
-			<ul>
-				<li>
-					<label for="name">Name</label>
-					<input type="string" name="name" placeholder="Company/Person" required>
-				</li>
-				<li>
-					<label for="password">EID</label>
-					<input type="password" name="ssn" placeholder="EID" required></li>
-				<li>
-					<label for="address">Address</label>
-					<input type="address" name="address" placeholder="Address" required></li>
-				<li>
-					<label for="number">Phone Number</label>
-					<input type="number" name="number" placeholder="xxx-xxx-xxxx" required></li>
-				<li>
-					<input type="submit" value="Submit">
-				</li>
-			</ul>
-		</form>
-	</section>
+		<form class="form-horizontal" name="login" action="registerFinalize" method="POST" accept-charset="utf-8">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input class="form-control" type="string" name="name" placeholder="Company/Person" required>
+            </div>
+            <div class="form-group">
+                <label for="password">EID</label>
+                <input class="form-control" type="password" name="ssn" placeholder="EID" required></div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input class="form-control" type="address" name="address" placeholder="Address" required></div>
+            <div class="form-group">
+                <label for="number">Phone Number</label>
+                <input class="form-control" type="number" name="number" placeholder="xxx-xxx-xxxx" required></div>
+            <div class="form-group">
+                <input class="btn btn-primary" type="submit" value="Submit">
+            </div>
+        </form>
+    </section>
 </body>
 </html>

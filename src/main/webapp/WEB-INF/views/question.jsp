@@ -15,7 +15,7 @@
 		<form name="question" action="question" method="post" accept-charset="utf-8">
 			<%  int i=0;
 				for(String s:(List<String>)request.getAttribute("answerList")) { i++; if(i==1){%>
-					<%=s%>
+                    <%=s%>
 				<%continue;}%>
 					<div>
 						<input type="radio" name="answer" id="answer" value="<%= i-2 %>" /> <%= s %>

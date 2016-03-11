@@ -14,25 +14,22 @@
 <%@ include file="webParts/anonBar.jsp" %>
 
 	<section class="loginform cf">
-		<form name="login" action="register" method="POST" accept-charset="utf-8">
-			<ul>
-				<li> I am a...
-				<input type="radio" name="test" value="person">Person
-				<input type="radio" name="test" value="compony">Company
-				</li>
-				<br></br>
-				<li>
-					<label for="username">Email</label>
-					<input type="email" name="username" placeholder="yourname@email.com" required>
-				</li>
-				<li>
-					<label for="password">Password</label>
-					<input type="password" name="password" placeholder="password" required></li>
-				<li>
-				<input type="submit" value="submit">
-				</li>
-			</ul>
-		</form>
-	</section>
+		<form class="form-horizontal" name="login" action="register" method="POST" accept-charset="utf-8">
+            <div class="form-group"> I am a...
+                <input type="radio" name="test" value="person">Person
+                <input type="radio" name="test" value="compony">Company
+            </div>
+            <div class="form-group">
+                <label for="username">Email</label>
+                <input class="form-control" type="email" name="username" placeholder="yourname@email.com" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input class="form-control" type="password" name="password" placeholder="password" required></div>
+            <div class="form-group">
+                <input class="btn btn-primary" type="submit" value="submit">
+            </div>
+        </form>
+    </section>
 </body>
 </html>
