@@ -129,11 +129,13 @@ public class User implements UserDetails{
 	}
 	
 	public void answeredTechQuestion(Job j, boolean right){
-		System.out.println("answerd Tech Question for "+j.getTitle());
+		System.out.println("answerd Tech Question for "+j.getTitle()+" was "+((right)?"correct":"wrong"));
+		
 	}
 	
 	public void answeredCulQuestion(Job j, boolean right){
-		System.out.println("answerd Cul Question for "+j.getTitle());
+		System.out.println("answerd Cul Question for "+j.getTitle()+" was "+((right)?"correct":"wrong"));
+		
 	}
 
 	

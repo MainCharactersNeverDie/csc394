@@ -1,6 +1,5 @@
 package main.java.testName;
 
-import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 import main.java.testName.alg.Algorithm;
@@ -8,6 +7,7 @@ import main.java.testName.jobs.Job;
 import main.java.testName.jobs.JobDAO;
 import main.java.testName.jobs.QuestionAnswerPair;
 import main.java.testName.questions.Question;
+import main.java.testName.questions.QuestionDAO;
 import main.java.testName.questions.RadialQuestion;
 import main.java.testName.userService.User;
 import main.java.testName.userService.UserLoginService;
@@ -31,6 +31,9 @@ public class CompanyController {
 	
 	@Autowired
 	private Algorithm alg;
+	
+	@Autowired
+	private QuestionDAO qdoa;
 	
 	
 	public ModelAndView signIn(){
@@ -113,12 +116,12 @@ public class CompanyController {
         }else if (a3==null){
         	q= new RadialQuestion(j,type.equals("tech"),question, a1,a2);
         }else if (a4== null){
-        	q= new RadialQuestion(j,type.equals("tech"),question, a1,a2,a3);
+        	q= new RadialQuestion(j,type.equals("tech"),question, a1,a3,a2);
         }else{
-        	q= new RadialQuestion(j,type.equals("tech"),question, a1,a2,a3,a4);
+        	q= new RadialQuestion(j,type.equals("tech"),question, a1,a4,a2,a3);
         }
         
-        alg.addQuestion(new QuestionAnswerPair(q, a1));
+        qdoa.addQuestion(new QuestionAnswerPair(q, "1"));
 
         
         ModelAndView mav= new ModelAndView("WEB-INF/views/cquestions.jsp");
