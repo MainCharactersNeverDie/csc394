@@ -2,57 +2,16 @@
 <%@ page import="main.java.testName.userService.UserDetails" %>
 
 <html>
+    <%@ include file="webParts/appBar.jsp" %>
 	<head>
 		<title>User Profile</title>
 		<link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/style.css">
+        <script type="text/javascript" src='js/profile.js'></script>
 	</head>
 	<body>
-<%@ include file="webParts/appBar.jsp" %>
 
-		<div class="badge-row row" style="float:left">
-			<div class="badge-row row" style="text-align:center">
-				<div class="col-xs-12 col-md-12 col-lg-6 badge-div">
-					<img src="images/boulder.png" height="42" width="42">
-					<img src="images/cascade.png" height="42" width="42">
-					<img src="images/thunder.png" height="42" width="42">
-					<img src="images/rainbow.png" height="42" width="42">
-				</diV>
-				<div class="col-xs-12 col-md-12 col-lg-6 badge-div">
-					<img src="images/soul.png" height="42" width="42">
-					<img src="images/marsh.png" height="42" width="42">
-					<img src="images/volcano.png" height="42" width="42">
-					<img src="images/earth.png" height="42" width="42">
-				</div>
-			</div>
-			<div class="badge-row row"style="text-align:center">
-				<div class="col-xs-12 col-md-12 col-lg-6 badge-div">
-					<img src="images/zephyr.png" height="42" width="42">
-					<img src="images/hive.png" height="42" width="42">
-					<img src="images/plain.png" height="42" width="42">
-					<img src="images/fog.png" height="42" width="42">
-				</div>
-				<div class="col-xs-12 col-md-12 col-lg-6 badge-div">
-					<img src="images/storm.png" height="42" width="42">
-					<img src="images/mineral.png" height="42" width="42">
-					<img src="images/glacier.png" height="42" width="42">
-					<img src="images/rising.png" height="42" width="42">
-				</div>
-			</div>
-			<div class="badge-row row"style="text-align:center">
-				<div class="col-xs-12 col-md-12 col-lg-6 badge-div">
-					<img src="images/coal.png" height="42" width="42">
-					<img src="images/forest.png" height="42" width="42">
-					<img src="images/cobble.png" height="42" width="42">
-					<img src="images/fen.png" height="42" width="42">
-				</div>
-				<div class="col-xs-12 col-md-12 col-lg-6 badge-div">
-					<img src="images/relic.png" height="42" width="42">
-					<img src="images/mine.png" height="42" width="42">
-					<img src="images/ice.png" height="42" width="42">
-					<img src="images/beacon.png" height="42" width="42">
-				</div>
-			</div>
+		<div id="badges" class="badge-row row" style="float:left">
 		</div>
 
 	<section class="loginform cf">
