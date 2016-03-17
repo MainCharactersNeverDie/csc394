@@ -15,6 +15,8 @@
 
 
 <h3 align="center"> Applicants Matched</h3>
+
+<% if (((List<Result>)request.getAttribute("res")).size()!=0){ %>
 <table class="hamsterTable" align="center">
 <tr>
 <th>Applicant Name</th><th>Job Title</th><th>Tech Score</th><th>Culture Score</th> <th>Overall Score</th><th>Availability</th>
@@ -30,7 +32,13 @@ for(Result result:results){
 }
 %>
 </table>
+<% } else{ %>
+<section class="loginform cf">
+<p align="center"> Post Jobs and create questions to see any Matches</p>
+</section>
 
-	</section>
+<% }%>
+
+
 </body>
 </html>

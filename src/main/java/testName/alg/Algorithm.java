@@ -32,7 +32,10 @@ public class Algorithm {
 		System.out.println(js);
 		for (Job j : js) {
 			for (User u : uls.applicantlist()) {
-				result.add(new Result(u, j.getTitle(), u.getCultureScore(), u.getTechScore(), u.getTotalScore(),uls.getUserDetails(u).getName()));
+				if(u.getTotalScore(j)==0){
+					continue;
+				}
+				result.add(new Result(u, j.getTitle(), u.getCultureScore(j), u.getTechScore(j), u.getTotalScore(j),uls.getUserDetails(u).getName()));
 			}
 		}
 		Collections.sort(result, new Comparator<Result>(){
