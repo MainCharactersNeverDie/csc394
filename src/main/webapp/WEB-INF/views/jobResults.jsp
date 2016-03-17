@@ -26,7 +26,7 @@ List<Result> results = (List<Result>)request.getAttribute("res");
 for(Result result:results){
 %>
 <tr>
-<td><%= result.getName() %></td><td><%=result.getJobTitle() %></td><td><%=result.getTechScore()%>%</td><td><%=result.getCultureScore() %>%</td><td><%=result.getOveralScore() %></td><td><%=result.getUser().getUsername()%></td>
+<td><%= result.getName() %></td><td><%=result.getJobTitle() %></td><td><%=result.getTechScore()%></td><td><%=result.getCultureScore() %></td><td><%=result.getOveralScore() %></td><td><%=result.getUser().getUsername()%></td>
 </tr>
 <%
 }

@@ -1,6 +1,6 @@
 $(document).ready(function(){
     var first = true;
-    // var badges = ['images/boulder.png', 'images/cascade.png', 'images/thunder.png', 'images/rainbow.png', 'images/soul.png', 'images/marsh.png', 'images/volcano.png', 'images/earth.png', "images/zephyr.png", "images/hive.png", "images/plain.png", "images/fog.png"];
+    var badges = ['images/boulder.png', 'images/cascade.png', 'images/thunder.png', 'images/rainbow.png', 'images/soul.png', 'images/marsh.png', 'images/volcano.png', 'images/earth.png', "images/zephyr.png", "images/hive.png", "images/plain.png", "images/fog.png"];
     var el      = "";
     for(var i = 0;  i < badges.length; ++i)
     {

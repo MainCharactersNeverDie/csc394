@@ -8,6 +8,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
+import javax.annotation.PostConstruct;
+
 import main.java.testName.jobs.Job;
 import main.java.testName.jobs.QuestionAnswerPair;
 import main.java.testName.userService.User;
@@ -102,10 +104,14 @@ public class QuestionDAO {
 	
 	//Please don't touch any of this
 	
+	private static volatile long numOfQs=0L;
+	
 	private static volatile boolean done=false;
+	@PostConstruct
 	public synchronized void transferQuestions() {
 		if (!done) {
 			done = true;
+			System.out.println("Adding Questions");
 			for (QuestionAnswerPair q : allQuestions) {
 				questions.put(numOfQs++, q);
 			}
@@ -113,13 +119,14 @@ public class QuestionDAO {
 	}
 	////////////////ABOVE IS OFF LIMITS TO ANYONE NOT WANTING TO BREAK EVERYTHING
 	
-	
-	private static volatile long numOfQs=0L;
+
 
 	public QuestionAnswerPair getUserQuesition(User u){
 		if(!userIndex.containsKey(u)){
 			userIndex.put(u,0L);
+			System.out.println("User Questions");
 		}
+
 		
 		return questions.get(userIndex.get(u));
 	}
