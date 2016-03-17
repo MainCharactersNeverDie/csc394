@@ -1,9 +1,11 @@
 package main.java.testName.userService;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.LinkedList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 import main.java.testName.Group;
@@ -16,8 +18,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 public class User implements UserDetails{
 	private static final long serialVersionUID = 1L;
+	public static final List<String> badgePossiblities = Arrays.asList(new String[]{"images/boulder.png", "images/cascade.png", "images/thunder.png", "images/rainbow.png", "images/soul.png", "images/marsh.png", "images/volcano.png", "images/earth.png", "images/zephyr.png", "images/hive.png", "images/plain.png", "images/fog.png"});
+	private static final double CHANCE = 20;
+
 	
-	private List<String> badges = new LinkedList<String>();
+	private ConcurrentHashMap<User,Set<String>> badges = new ConcurrentHashMap<>();
 	private static ConcurrentHashMap<JobUserPair,Score> scores= new  ConcurrentHashMap<>();
 	
 	private Group userGroup;
@@ -28,6 +33,9 @@ public class User implements UserDetails{
 		userGroup=userGroupIn;
 		username=usernameIn;
 		password=passwordIn;
+		if(badges.get(this)==null){
+			badges.put(this, new HashSet<String>());
+		}
 	}
 	
 	@Override
@@ -108,12 +116,12 @@ public class User implements UserDetails{
 		return true;
 	}
 
-	public List<String> getBadges() {
-		return badges;
+	public Set<String> getBadges() {
+		return badges.get(this);
 	}
 	
 	public void giveBadge(String badge){
-		badges.add(badge);
+		badges.get(this).add(badge);
 	}
 
 	public int getCultureScore(Job j) {
@@ -138,6 +146,16 @@ public class User implements UserDetails{
 	}
 	
 	public void answeredTechQuestion(Job j, boolean right){
+		if(right){
+			if(getBadges().size()==0){
+				giveBadge();
+			}else{
+				int rand = (int)(CHANCE*Math.random());
+				if(rand==1){
+					giveBadge();
+				}
+			}
+		}
 		if(scores.get(new JobUserPair(j,this))==null){
 			scores.put(new JobUserPair(j,this),new Score(0,0,0));
 		}
@@ -147,11 +165,26 @@ public class User implements UserDetails{
 	}
 	
 	public void answeredCulQuestion(Job j, boolean right){
+		if(right){
+			if(getBadges().size()==0){
+				giveBadge();
+			}else{
+				int rand = (int)(CHANCE*Math.random());
+				if(rand==1){
+					giveBadge();
+				}
+			}
+		}
 		if(scores.get(new JobUserPair(j,this))==null){
 			scores.put(new JobUserPair(j,this),new Score(0,0,0));
 		}
 		System.out.println("answerd Cul Question for "+j.getTitle()+" was "+((right)?"correct":"wrong"));
 		scores.put(new JobUserPair(j,this),new Score(scores.get(new JobUserPair(j,this)).getCul(),scores.get(new JobUserPair(j,this)).getTech()+1,scores.get(new JobUserPair(j,this)).getTotal()+1));
+	}
+	
+	public void giveBadge(){
+		int rand = (int)(badgePossiblities.size()*Math.random());
+		giveBadge(badgePossiblities.get(rand));
 	}
 
 	

@@ -34,7 +34,14 @@ public class ApplicantController {
 		ModelAndView mav =new ModelAndView("WEB-INF/views/appProfile.jsp");
 		mav.addObject("userDetails", uls.getUserDetails(user));
 		mav.addObject("email",user.getUsername());
-		mav.addObject("badges",user.getBadges());
+		StringBuilder sb = new StringBuilder();
+		sb.append("[");
+		for(String s: user.getBadges()){
+			sb.append("\'"+s+"\',");
+		}
+		sb.replace(sb.length()-1, sb.length(),"" );
+		sb.append("];");
+		mav.addObject("badges",sb.toString());
 		return mav;
 	}
 	
@@ -55,6 +62,9 @@ public class ApplicantController {
 	
 	@RequestMapping(value="/question",method=RequestMethod.POST)
 	public ModelAndView questionAnswered(String answer){
+		if(answer==null){
+			return question();
+		}
 		User user=uls.getLogedInUser();
 		if(user.getUserGroup()!=Group.Applicant){
 			return new ModelAndView("reditect:503");
