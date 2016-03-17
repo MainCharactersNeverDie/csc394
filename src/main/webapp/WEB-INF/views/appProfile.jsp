@@ -2,11 +2,11 @@
 <%@ page import="main.java.testName.userService.UserDetails" %>
 
 <html>
-    <%@ include file="webParts/appBar.jsp" %>
 	<head>
 		<title>User Profile</title>
 		<link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/style.css">
+        <%@ include file="webParts/appBar.jsp" %>
         <script type="text/javascript" src='js/profile.js'></script>
 	</head>
 	<body>

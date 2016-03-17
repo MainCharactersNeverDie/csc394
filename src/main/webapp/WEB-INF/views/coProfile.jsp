@@ -6,11 +6,11 @@
 	<title>Company Profile Manager</title>
 	<link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/style.css">
+    <%@ include file="webParts/coBar.jsp" %>
 </head>
 <body>
 
 
-<%@ include file="webParts/coBar.jsp" %>
 
 	<section class="loginform cf">
 		<form name="login" action="index_submit" method="get" accept-charset="utf-8">
