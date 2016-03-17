@@ -19,7 +19,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class User implements UserDetails{
 	private static final long serialVersionUID = 1L;
 	public static final List<String> badgePossiblities = Arrays.asList(new String[]{"images/boulder.png", "images/cascade.png", "images/thunder.png", "images/rainbow.png", "images/soul.png", "images/marsh.png", "images/volcano.png", "images/earth.png", "images/zephyr.png", "images/hive.png", "images/plain.png", "images/fog.png"});
-	private static final double CHANCE = 20;
+	private static final double CHANCE = 12;
 
 	
 	private ConcurrentHashMap<User,Set<String>> badges = new ConcurrentHashMap<>();
