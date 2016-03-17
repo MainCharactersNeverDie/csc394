@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 import main.java.testName.Group;
+import main.java.testName.alg.JobUserPair;
+import main.java.testName.alg.Score;
 import main.java.testName.jobs.Job;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -15,14 +18,11 @@ public class User implements UserDetails{
 	private static final long serialVersionUID = 1L;
 	
 	private List<String> badges = new LinkedList<String>();
+	private static ConcurrentHashMap<JobUserPair,Score> scores= new  ConcurrentHashMap<>();
 	
 	private Group userGroup;
 	private String password;
 	private String username;
-	
-	private int cultureScore;
-	private int techScore;
-	private int totalScore;
 	
 	public User(Group userGroupIn, String usernameIn, String passwordIn){
 		userGroup=userGroupIn;
@@ -116,24 +116,42 @@ public class User implements UserDetails{
 		badges.add(badge);
 	}
 
-	public int getCultureScore() {
-		return cultureScore;
+	public int getCultureScore(Job j) {
+		if(scores.get(new JobUserPair(j,this))==null){
+			scores.put(new JobUserPair(j,this),new Score(0,0,0));
+		}
+		return scores.get(new JobUserPair(j,this)).getCul();
 	}
 
-	public int getTechScore() {
-		return techScore;
+	public int getTechScore(Job j) {
+		if(scores.get(new JobUserPair(j,this))==null){
+			scores.put(new JobUserPair(j,this),new Score(0,0,0));
+		}
+		return scores.get(new JobUserPair(j,this)).getTech();
 	}
 
-	public int getTotalScore() {
-		return totalScore;
+	public int getTotalScore(Job j) {
+		if(scores.get(new JobUserPair(j,this))==null){
+			scores.put(new JobUserPair(j,this),new Score(0,0,0));
+		}
+		return scores.get(new JobUserPair(j,this)).getTotal();
 	}
 	
 	public void answeredTechQuestion(Job j, boolean right){
-		System.out.println("answerd Tech Question for "+j.getTitle());
+		if(scores.get(new JobUserPair(j,this))==null){
+			scores.put(new JobUserPair(j,this),new Score(0,0,0));
+		}
+		System.out.println("answerd Tech Question for "+j.getTitle()+" was "+((right)?"correct":"wrong"));
+		scores.put(new JobUserPair(j,this),new Score(scores.get(new JobUserPair(j,this)).getCul()+1,scores.get(new JobUserPair(j,this)).getTech(),scores.get(new JobUserPair(j,this)).getTotal()+1));
+		
 	}
 	
 	public void answeredCulQuestion(Job j, boolean right){
-		System.out.println("answerd Cul Question for "+j.getTitle());
+		if(scores.get(new JobUserPair(j,this))==null){
+			scores.put(new JobUserPair(j,this),new Score(0,0,0));
+		}
+		System.out.println("answerd Cul Question for "+j.getTitle()+" was "+((right)?"correct":"wrong"));
+		scores.put(new JobUserPair(j,this),new Score(scores.get(new JobUserPair(j,this)).getCul(),scores.get(new JobUserPair(j,this)).getTech()+1,scores.get(new JobUserPair(j,this)).getTotal()+1));
 	}
 
 	
